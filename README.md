@@ -1,3 +1,5 @@
+![Remote Msi Manager Logo](https://github.com/DCourtel/Remote_MSI_Manager/blob/master/Remote%20MSI%C2%A0Manager.png)
+
 # __Remote MSI Manager__
 This application allows Administrators to see which MSI Products are installed on their computer or on remote computers.
 
