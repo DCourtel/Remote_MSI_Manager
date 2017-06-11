@@ -1,7 +1,0 @@
-C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\RemoteMsiManager\bin\Release\de\RemoteMsiManager.resources.dll
-C:\Users\Courtel.MCSA\Documents\Remote MSI Manager\Remote MSI Manager.pdf
-C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\RemoteMsiManager\bin\Release\en\RemoteMsiManager.resources.dll
-C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\RemoteMsiManager\bin\Release\fr\RemoteMsiManager.resources.dll
-C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\RemoteMsiManager\bin\Release\RemoteMsiManager.exe
-C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\RemoteMsiManager\bin\Release\pt\RemoteMsiManager.resources.dll
-C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\RemoteMsiManager\bin\Release\ru\RemoteMsiManager.resources.dll

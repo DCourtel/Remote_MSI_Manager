@@ -1,9 +1,0 @@
-obj\Release\Components.wixobj
-obj\Release\Folders.wixobj
-obj\Release\Product.wixobj
-obj\Release\Registry.wixobj
-C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\SetupRemoteMsiManager\bin\Release\Remote Msi Manager.msi
-C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\SetupRemoteMsiManager\bin\Release\Remote Msi Manager.wixpdb
-obj\Release\SetupRemoteMsiManager.wixproj.BindContentsFileListnull.txt
-obj\Release\SetupRemoteMsiManager.wixproj.BindOutputsFileListnull.txt
-obj\Release\SetupRemoteMsiManager.wixproj.BindBuiltOutputsFileListnull.txt

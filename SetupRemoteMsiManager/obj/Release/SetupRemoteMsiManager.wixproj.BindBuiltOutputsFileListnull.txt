@@ -1,2 +1,0 @@
-C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\SetupRemoteMsiManager\bin\Release\Remote Msi Manager.msi
-C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\SetupRemoteMsiManager\bin\Release\Remote Msi Manager.wixpdb

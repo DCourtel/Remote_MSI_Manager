@@ -1,7 +1,0 @@
-C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\RemoteMsiManager\bin\x64\Release\RemoteMsiManager.exe.config
-C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\RemoteMsiManager\bin\x64\Release\RemoteMsiManager.exe
-C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\RemoteMsiManager\obj\x64\Release\RemoteMsiManager.FrmMain.resources
-C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\RemoteMsiManager\obj\x64\Release\RemoteMsiManager.FrmAddRemoteComputer.resources
-C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\RemoteMsiManager\obj\x64\Release\RemoteMsiManager.Properties.Resources.resources
-C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\RemoteMsiManager\obj\x64\Release\RemoteMsiManager.csproj.GenerateResource.Cache
-C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\RemoteMsiManager\obj\x64\Release\RemoteMsiManager.exe
