@@ -233,6 +233,8 @@ namespace RemoteMsiManager
         private void btnInstall_Click(object sender, EventArgs e)
         {
             this.LockUI(false);
+            txtBxResult.Text = String.Empty;
+            txtBxResult.Refresh();
             string rootFolder = @"\\" + this._targetComputer.ComputerName + @"\C$\Windows";
             string subFolder = System.IO.Path.Combine(@"Temp\MsiManager", System.IO.Path.GetRandomFileName());
 

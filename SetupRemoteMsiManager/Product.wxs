@@ -10,9 +10,9 @@
     <Property Id="ARPNOMODIFY" Value="1"/>
     <Property Id="ARPCONTACT" Value="package.publisher@free.fr"/>
     <Property Id="ARPPRODUCTICON" Value="MainIconForProgramMenu.exe"/>
-    <Property Id="ARPHELPLINK" Value="https://remotemsimanager.codeplex.com/documentation"/>
-    <Property Id="ARPURLINFOABOUT" Value="https://remotemsimanager.codeplex.com/"/>
-    <Property Id="ARPURLUPDATEINFO" Value="https://remotemsimanager.codeplex.com/releases/"/>
+    <Property Id="ARPHELPLINK" Value="https://github.com/DCourtel/Remote_MSI_Manager/wiki"/>
+    <Property Id="ARPURLINFOABOUT" Value="https://github.com/DCourtel/Remote_MSI_Manager/blob/master/README.md"/>
+    <Property Id="ARPURLUPDATEINFO" Value="https://github.com/DCourtel/Remote_MSI_Manager"/>
     <Property Id="ARPCOMMENTS" Value="Show MSI Products installed on the local or remote computer."/>
 
     <Feature Id="ProductFeature" Title="Remote Msi Manager" Level="1" InstallDefault="local" Absent="disallow" AllowAdvertise="no">

@@ -395,7 +395,6 @@ namespace RemoteMsiManager
         {
             UInt32 result = int.MaxValue;
 
-
             ConnectionOptions connectionOptions = new ConnectionOptions();
             if (this.ComputerLocation == ComputerLocations.Remote && !String.IsNullOrEmpty(this.Username))
             {
@@ -409,7 +408,7 @@ namespace RemoteMsiManager
             ManagementClass classInstance = new ManagementClass(scope, new ManagementPath("Win32_Product"), null);
             ManagementBaseObject inParams = classInstance.GetMethodParameters("Install");
             inParams["AllUsers"] = true;
-            if (!String.IsNullOrEmpty(options))
+            if (!String.IsNullOrWhiteSpace(options))
             { inParams["Options"] = options; }
             inParams["PackageLocation"] = packageLocation;
             ManagementBaseObject outParams = classInstance.InvokeMethod("Install", inParams, null);
