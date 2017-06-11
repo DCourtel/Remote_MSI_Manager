@@ -1,0 +1,9 @@
+C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\SetupRemoteMsiManager\bin\Debug\Remote Msi Manager.msi
+C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\SetupRemoteMsiManager\bin\Debug\Remote Msi Manager.wixpdb
+obj\Debug\Components.wixobj
+obj\Debug\Folders.wixobj
+obj\Debug\Product.wixobj
+obj\Debug\SetupRemoteMsiManager.wixproj.BindContentsFileListnull.txt
+obj\Debug\SetupRemoteMsiManager.wixproj.BindOutputsFileListnull.txt
+obj\Debug\SetupRemoteMsiManager.wixproj.BindBuiltOutputsFileListnull.txt
+obj\Debug\Registry.wixobj

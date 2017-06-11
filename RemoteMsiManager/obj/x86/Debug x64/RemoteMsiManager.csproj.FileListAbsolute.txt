@@ -1,0 +1,1 @@
+C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\RemoteMsiManager\bin\x86\Debug x64\RemoteMsiManager.exe.config

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Name="Remote MSI Manager" Language="1033" Version="!(bind.FileVersion.MainFile)" Manufacturer="EasyCompany" UpgradeCode="D9C37E9D-CCAB-BA5E-1DEA-3C71BAF15DC8">
+    <Package Manufacturer="EasyCompany" Comments="A little application to show MSI Products installed on the local or remote computer. It, also, allow to uninstall these MSI Products." InstallerVersion="200" Compressed="yes" InstallScope="perMachine"/>
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of Remote MSI Manager is already installed." AllowSameVersionUpgrades="yes"/>    
+    <MediaTemplate EmbedCab="yes"/>
+        
+    <Property Id="VERSION" Value="!(bind.FileVersion.MainFile)"/>
+    <Property Id="ARPNOMODIFY" Value="1"/>
+    <Property Id="ARPCONTACT" Value="package.publisher@free.fr"/>
+    <Property Id="ARPPRODUCTICON" Value="MainIconForProgramMenu.exe"/>
+    <Property Id="ARPHELPLINK" Value="https://remotemsimanager.codeplex.com/documentation"/>
+    <Property Id="ARPURLINFOABOUT" Value="https://remotemsimanager.codeplex.com/"/>
+    <Property Id="ARPURLUPDATEINFO" Value="https://remotemsimanager.codeplex.com/releases/"/>
+    <Property Id="ARPCOMMENTS" Value="Show MSI Products installed on the local or remote computer."/>
+
+    <Feature Id="ProductFeature" Title="Remote Msi Manager" Level="1" InstallDefault="local" Absent="disallow" AllowAdvertise="no">
+      <ComponentGroupRef Id="cg_RemoteMsiManager"/>
+      <ComponentRef Id="SoftwareRegistryValues"/>
+    </Feature>
+  </Product>
+</Wix>

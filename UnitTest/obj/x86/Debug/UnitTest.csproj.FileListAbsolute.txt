@@ -1,0 +1,12 @@
+C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\UnitTest\bin\x86\Debug\UnitTest.dll
+C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\UnitTest\bin\x86\Debug\UnitTest.pdb
+C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\UnitTest\bin\x86\Debug\RemoteMsiManager.exe
+C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\UnitTest\bin\x86\Debug\RemoteMsiManager.pdb
+C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\UnitTest\bin\x86\Debug\de\RemoteMsiManager.resources.dll
+C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\UnitTest\bin\x86\Debug\en\RemoteMsiManager.resources.dll
+C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\UnitTest\bin\x86\Debug\fr\RemoteMsiManager.resources.dll
+C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\UnitTest\bin\x86\Debug\pt\RemoteMsiManager.resources.dll
+C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\UnitTest\bin\x86\Debug\ru\RemoteMsiManager.resources.dll
+C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\UnitTest\obj\x86\Debug\UnitTest.csprojResolveAssemblyReference.cache
+C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\UnitTest\obj\x86\Debug\UnitTest.dll
+C:\Users\Courtel.MCSA\Documents\Visual Studio 2013\Projects\RemoteMsiManager\UnitTest\obj\x86\Debug\UnitTest.pdb

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="Remote Msi Manager">
+          <Directory Id="fr" Name="fr"/>
+          <Directory Id="en" Name="en"/>
+          <Directory Id="ru" Name="ru"/>
+          <Directory Id="pt" Name="pt"/>
+          <Directory Id="de" Name="de"/>
+          <Directory Id="Documentation" Name="Documentation"/>
+        </Directory>
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ShortcutFolder" Name="Remote MSI Manager"/>
+      </Directory>
+      <Directory Id="DesktopFolder"/>
+    </Directory>
+  </Fragment>
+</Wix>

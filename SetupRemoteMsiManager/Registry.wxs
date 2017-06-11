@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+    <DirectoryRef Id="TARGETDIR">
+      <Component Guid="*" Id="SoftwareRegistryValues">
+        <RegistryKey Root="HKLM" Key="Software\Remote MSI Manager">
+          <RegistryValue Type="string" Name="DisplayVersion" Value="!(bind.FileVersion.MainFile)" KeyPath="yes"/>
+          <RegistryValue Type="string" Name="InstallationPath" Value="[INSTALLFOLDER]"/>
+        </RegistryKey>
+      </Component>
+    </DirectoryRef>
+	</Fragment>
+</Wix>
