@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoteMsiManager", "RemoteMsiManager\RemoteMsiManager.csproj", "{CD4E4567-AF8D-499B-8150-D5C8FC3D4A53}"
 EndProject
@@ -36,7 +36,6 @@ Global
 		{180E76B3-52A9-4AFB-A415-6F09D974D1B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{180E76B3-52A9-4AFB-A415-6F09D974D1B3}.Debug|x64.ActiveCfg = Debug|x64
 		{180E76B3-52A9-4AFB-A415-6F09D974D1B3}.Debug|x86.ActiveCfg = Debug|x86
-		{180E76B3-52A9-4AFB-A415-6F09D974D1B3}.Debug|x86.Build.0 = Debug|x86
 		{180E76B3-52A9-4AFB-A415-6F09D974D1B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{180E76B3-52A9-4AFB-A415-6F09D974D1B3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{180E76B3-52A9-4AFB-A415-6F09D974D1B3}.Release|x64.ActiveCfg = Release|x64
@@ -55,10 +54,11 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_BuildVersioningStyle = None.None.YearDecadeAndMonthStamp.DeltaBaseDate
-		BuildVersion_UpdateAssemblyVersion = True
-		BuildVersion_UpdateFileVersion = True
-		BuildVersion_AssemblyInfoFilename = RemoteMsiManager\Properties\AssemblyInfo.cs
 		BuildVersion_DetectChanges = False
+		BuildVersion_AssemblyInfoFilename = RemoteMsiManager\Properties\AssemblyInfo.cs
+		BuildVersion_UpdateFileVersion = True
+		BuildVersion_UpdateAssemblyVersion = True
+		BuildVersion_BuildVersioningStyle = None.None.YearDecadeAndMonthStamp.DeltaBaseDate
+		SolutionGuid = {79F6CB40-3F0F-47A7-923A-B76023C8C279}
 	EndGlobalSection
 EndGlobal

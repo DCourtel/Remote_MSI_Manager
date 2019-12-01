@@ -164,7 +164,4 @@
   <data name="label3.Text" xml:space="preserve">
     <value>сообщение</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Удалить продукты MSI</value>
-  </data>
 </root>

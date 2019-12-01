@@ -12,7 +12,7 @@ namespace RemoteMsiManager
 
         private Localization()
         {
-            this._resMan = new System.Resources.ResourceManager("RemoteMsiManager.Localization.Resources", typeof(FrmRemoteMsiManager).Assembly);
+            _resMan = new System.Resources.ResourceManager("RemoteMsiManager.Localization.Resources", typeof(FrmRemoteMsiManager).Assembly);
         }
 
         internal static Localization GetInstance()
@@ -33,7 +33,7 @@ namespace RemoteMsiManager
 
             try
             {
-                result = this._resMan.GetString(unlocalizedString);
+                result = _resMan.GetString(unlocalizedString);
                 if (!string.IsNullOrEmpty(result))
                     return result;
             }

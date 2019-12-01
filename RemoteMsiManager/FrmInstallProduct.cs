@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.IO;
 using System.Windows.Forms;
+using Microsoft.AppCenter.Crashes;
 
 namespace RemoteMsiManager
 {
     public partial class FrmInstallProduct : Form
     {
-        private Computer _targetComputer;
-        private Localization _localization = Localization.GetInstance();
+        private readonly Computer _targetComputer;
+        private readonly Localization _localization = Localization.GetInstance();
 
         internal FrmInstallProduct(Computer targetComputer)
         {
@@ -20,17 +18,17 @@ namespace RemoteMsiManager
 
             try
             {
-                System.IO.FileInfo sourceFile = new System.IO.FileInfo(Properties.Settings.Default.NetworkInstallSource);
+                FileInfo sourceFile = new FileInfo(Properties.Settings.Default.NetworkInstallSource);
 
-                if (System.IO.Directory.Exists(sourceFile.DirectoryName))
+                if (Directory.Exists(sourceFile.DirectoryName))
                 {
-                    this.txtBxLocalPackage.Text = sourceFile.DirectoryName;
+                    txtBxLocalPackage.Text = sourceFile.DirectoryName;
                 }
             }
-            catch (Exception) { }
+            catch (Exception ex) { Crashes.TrackError(ex); }
 
-            this.txtBxTargetComputer.Text = targetComputer.ComputerName;
-            this._targetComputer = targetComputer;
+            txtBxTargetComputer.Text = targetComputer.ComputerName;
+            _targetComputer = targetComputer;
         }
 
         #region (Methods)
@@ -49,59 +47,59 @@ namespace RemoteMsiManager
 
             try
             {
-                _sourceFileExists = System.IO.File.Exists(this.txtBxLocalPackage.Text) && this.txtBxLocalPackage.Text.ToLower().EndsWith(".msi");
+                _sourceFileExists = File.Exists(txtBxLocalPackage.Text) && txtBxLocalPackage.Text.ToLower().EndsWith(".msi");
 
-                foreach (string file in this.chkLstFiles.Items)
+                foreach (string file in chkLstFiles.Items)
                 {
-                    if (!System.IO.File.Exists(file))
+                    if (!File.Exists(file))
                     {
                         _additionalFilesExists = false;
                         break;
                     }
                 }
 
-                foreach (string folder in this.chklstFolders.Items)
+                foreach (string folder in chklstFolders.Items)
                 {
-                    if (!System.IO.Directory.Exists(folder))
+                    if (!Directory.Exists(folder))
                     {
                         _additionalFoldersExists = false;
                         break;
                     }
                 }
             }
-            catch (Exception) { }
+            catch (Exception ex) { Crashes.TrackError(ex); }
 
-            this.btnInstall.Enabled = _sourceFileExists && _additionalFilesExists && _additionalFoldersExists;
-            this.btnRemoveFiles.Enabled = (this.chkLstFiles.CheckedItems != null && this.chkLstFiles.CheckedItems.Count != 0);
-            this.btnRemoveFolders.Enabled = (this.chklstFolders.CheckedItems != null && this.chklstFolders.CheckedItems.Count != 0);
+            btnInstall.Enabled = _sourceFileExists && _additionalFilesExists && _additionalFoldersExists;
+            btnRemoveFiles.Enabled = (chkLstFiles.CheckedItems != null && chkLstFiles.CheckedItems.Count != 0);
+            btnRemoveFolders.Enabled = (chklstFolders.CheckedItems != null && chklstFolders.CheckedItems.Count != 0);
         }
 
         private void DisplayStatus(string message)
         {
-            this.txtBxStatus.Text = message;
-            this.txtBxStatus.Refresh();
+            txtBxStatus.Text = message;
+            txtBxStatus.Refresh();
         }
 
-        private void DisplayResult(UInt32 resultCode)
+        private void DisplayResult(uint resultCode)
         {
-            if(MsiProduct.IsSuccess(resultCode))
+            if (MsiProduct.IsSuccess(resultCode))
             {
-                if(MsiProduct.IsRebootNeeded(resultCode))
+                if (MsiProduct.IsRebootNeeded(resultCode))
                 {
-                    this.txtBxResult.Text = this._localization.GetLocalizedString("SuccessPendingReboot");
+                    txtBxResult.Text = _localization.GetLocalizedString("SuccessPendingReboot");
                 }
                 else
                 {
-                    this.txtBxResult.Text = this._localization.GetLocalizedString("Success");
+                    txtBxResult.Text = _localization.GetLocalizedString("Success");
                 }
-                this.txtBxResult.BackColor = Color.LightGreen;
+                txtBxResult.BackColor = Color.LightGreen;
             }
             else
             {
-                this.txtBxResult.Text = this._localization.GetLocalizedString("Failed") + "(" + resultCode.ToString() + ") : " + MsiProduct.GetErrorMessage(resultCode);
-                this.txtBxResult.BackColor = Color.Orange;
+                txtBxResult.Text = _localization.GetLocalizedString("Failed") + "(" + resultCode.ToString() + ") : " + MsiProduct.GetErrorMessage(resultCode);
+                txtBxResult.BackColor = Color.Orange;
             }
-            this.txtBxResult.Refresh();
+            txtBxResult.Refresh();
         }
 
         /// <summary>
@@ -110,19 +108,20 @@ namespace RemoteMsiManager
         /// <param name="isEnabled">true to enable the UI, false to disable the UI</param>
         private void LockUI(bool isEnabled)
         {
-            this.btnBrowse.Enabled = isEnabled;
-            this.btnInstall.Enabled = isEnabled;
-            this.btnClose.Enabled = isEnabled;
-            this.btnAddAdditionnalFiles.Enabled = isEnabled;
-            this.btnRemoveFiles.Enabled = isEnabled;
-            this.btnAddFolders.Enabled = isEnabled;
-            this.btnRemoveFolders.Enabled = isEnabled;
+            btnBrowse.Enabled = isEnabled;
+            btnInstall.Enabled = isEnabled;
+            btnClose.Enabled = isEnabled;
+            btnAddAdditionnalFiles.Enabled = isEnabled;
+            btnRemoveFiles.Enabled = isEnabled;
+            btnAddFolders.Enabled = isEnabled;
+            btnRemoveFolders.Enabled = isEnabled;
 
-            this.txtBxLocalPackage.Enabled = isEnabled;
-            this.txtBxOptions.Enabled = isEnabled;
+            txtBxLocalPackage.Enabled = isEnabled;
+            txtBxOptions.Enabled = isEnabled;
+            ChkBxNeverRestart.Enabled = isEnabled;
 
-            this.chkLstFiles.Enabled = isEnabled;
-            this.chklstFolders.Enabled = isEnabled;
+            chkLstFiles.Enabled = isEnabled;
+            chklstFolders.Enabled = isEnabled;
         }
 
         #endregion (Methods)
@@ -132,212 +131,232 @@ namespace RemoteMsiManager
         // Buttons
 
         /// <summary>
-        /// Allow the user to browse the file system to select one and only one MSI file. The file must exists.
+        /// Allows the user to browse the file system to select one and only one MSI file. The file must exists.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnBrowse_Click(object sender, EventArgs e)
+        private void BtnBrowse_Click(object sender, EventArgs e)
         {
             try
             {
-                OpenFileDialog fileBrowser = new OpenFileDialog();
-                fileBrowser.InitialDirectory = this.txtBxLocalPackage.Text;
-                fileBrowser.Filter = "MSI Files|*.MSI";
-
-                if (fileBrowser.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                using (var fileBrowser = new OpenFileDialog())
                 {
-                    this.txtBxLocalPackage.Text = fileBrowser.FileName;
+                    fileBrowser.InitialDirectory = txtBxLocalPackage.Text;
+                    fileBrowser.Filter = "MSI Files|*.MSI";
+                    if (fileBrowser.ShowDialog() == DialogResult.OK)
+                    {
+                        txtBxLocalPackage.Text = fileBrowser.FileName;
+                    }
                 }
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            catch (Exception ex) {
+                Crashes.TrackError(ex);
+                MessageBox.Show(ex.Message); }
         }
 
-        private void btnAddAdditionnalFiles_Click(object sender, EventArgs e)
+        private void BtnAddAdditionnalFiles_Click(object sender, EventArgs e)
         {
             try
             {
-                OpenFileDialog fileBrowser = new OpenFileDialog();
-                fileBrowser.InitialDirectory = this.txtBxLocalPackage.Text;
-                fileBrowser.Filter = "All Files|*.*|MST Files|*.MST";
-                fileBrowser.Multiselect = true;
-
-                if (fileBrowser.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                using(var fileBrowser = new OpenFileDialog())
                 {
-                    foreach (string file in fileBrowser.FileNames)
+                    fileBrowser.InitialDirectory = txtBxLocalPackage.Text;
+                    fileBrowser.Filter = "All Files|*.*|MST Files|*.MST";
+                    fileBrowser.Multiselect = true;
+                    if (fileBrowser.ShowDialog() == DialogResult.OK)
                     {
-                        if (!this.chkLstFiles.Items.Contains(file))
+                        foreach (string file in fileBrowser.FileNames)
                         {
-                            this.chkLstFiles.Items.Add(file);
+                            if (!chkLstFiles.Items.Contains(file))
+                            {
+                                chkLstFiles.Items.Add(file);
+                            }
+                            else
+                                MessageBox.Show(_localization.GetLocalizedString("filealreadyincludes") + "\r\n" + file);
                         }
+                    }
+                }                
+            }
+            catch (Exception ex) {
+                Crashes.TrackError(ex);
+                MessageBox.Show(ex.Message); }
+        }
+
+        private void BtnAddFolders_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using(var folderBrowser = new FolderBrowserDialog())
+                {
+                    folderBrowser.SelectedPath = txtBxLocalPackage.Text;
+                    if (folderBrowser.ShowDialog() == DialogResult.OK)
+                    {
+                        if (!chklstFolders.Items.Contains(folderBrowser.SelectedPath))
+                            chklstFolders.Items.Add(folderBrowser.SelectedPath);
                         else
-                            MessageBox.Show(this._localization.GetLocalizedString("filealreadyincludes") + "\r\n" + file);
+                            MessageBox.Show(_localization.GetLocalizedString("folderalreadyincludes") + "\r\n" + folderBrowser.SelectedPath);
                     }
-                }
+                }                
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            catch (Exception ex) {
+                Crashes.TrackError(ex);
+                MessageBox.Show(ex.Message); }
         }
 
-        private void btnAddFolders_Click(object sender, EventArgs e)
+        private void BtnRemoveFiles_Click(object sender, EventArgs e)
         {
             try
             {
-                FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
-
-                folderBrowser.SelectedPath = this.txtBxLocalPackage.Text;
-
-                if (folderBrowser.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    if (!this.chklstFolders.Items.Contains(folderBrowser.SelectedPath))
-                        this.chklstFolders.Items.Add(folderBrowser.SelectedPath);
-                    else
-                        MessageBox.Show(this._localization.GetLocalizedString("folderalreadyincludes") + "\r\n" + folderBrowser.SelectedPath);
-                }
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
-        }
-
-        private void btnRemoveFiles_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                while (this.chkLstFiles.CheckedItems.Count != 0)
+                while (chkLstFiles.CheckedItems.Count != 0)
                 {
                     try
                     {
-                        this.chkLstFiles.Items.Remove(this.chkLstFiles.CheckedItems[0]);
+                        chkLstFiles.Items.Remove(chkLstFiles.CheckedItems[0]);
                     }
-                    catch (Exception) { }
+                    catch (Exception ex) { Crashes.TrackError(ex); }
                 }
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
-            this.ValidateData();
+            catch (Exception ex) {
+                Crashes.TrackError(ex);
+                MessageBox.Show(ex.Message); }
+            ValidateData();
         }
 
-        private void btnRemoveFolders_Click(object sender, EventArgs e)
+        private void BtnRemoveFolders_Click(object sender, EventArgs e)
         {
             try
             {
-                while (this.chklstFolders.CheckedItems.Count != 0)
+                while (chklstFolders.CheckedItems.Count != 0)
                 {
                     try
                     {
-                        this.chklstFolders.Items.Remove(this.chklstFolders.CheckedItems[0]);
+                        chklstFolders.Items.Remove(chklstFolders.CheckedItems[0]);
                     }
-                    catch (Exception) { }
+                    catch (Exception ex) { Crashes.TrackError(ex); }
                 }
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
-            this.ValidateData();
+            catch (Exception ex) {
+                Crashes.TrackError(ex);
+                MessageBox.Show(ex.Message); }
+            ValidateData();
         }
 
-        private void btnInstall_Click(object sender, EventArgs e)
+        private void BtnInstall_Click(object sender, EventArgs e)
         {
-            this.LockUI(false);
-            txtBxResult.Text = String.Empty;
+            LockUI(false);
+            txtBxResult.Clear();
             txtBxResult.Refresh();
-            string rootFolder = @"\\" + this._targetComputer.ComputerName + @"\C$\Windows";
-            string subFolder = System.IO.Path.Combine(@"Temp\MsiManager", System.IO.Path.GetRandomFileName());
+            string rootFolder = @"\\" + _targetComputer.ComputerName + @"\C$\Windows";
+            string subFolder = Path.Combine(@"Temp\MsiManager", Path.GetRandomFileName());
 
             try
             {
                 List<string> additionalFiles = new List<string>();
                 List<string> additionalFolders = new List<string>();
-                System.IO.FileInfo mainFileInfo = new System.IO.FileInfo(this.txtBxLocalPackage.Text);
+                FileInfo mainFileInfo = new FileInfo(txtBxLocalPackage.Text);
 
-                foreach (var item in this.chkLstFiles.Items)
+                foreach (var item in chkLstFiles.Items)
                 {
                     additionalFiles.Add(item.ToString());
                 }
-                foreach (var item in this.chklstFolders.Items)
+                foreach (var item in chklstFolders.Items)
                 {
                     additionalFolders.Add(item.ToString());
                 }
 
-                DisplayStatus(this._localization.GetLocalizedString("Copying"));
-                this._targetComputer.CopySourceToRemoteComputer(rootFolder, subFolder, mainFileInfo.FullName, additionalFiles, additionalFolders);
+                DisplayStatus(_localization.GetLocalizedString("Copying"));
+                _targetComputer.CopySourceToRemoteComputer(rootFolder, subFolder, mainFileInfo.FullName, additionalFiles, additionalFolders);
 
-                DisplayStatus(this._localization.GetLocalizedString("Installing"));
-                UInt32 result = this._targetComputer.InstallProduct(System.IO.Path.Combine(rootFolder, subFolder, mainFileInfo.Name), this.txtBxOptions.Text);
+                DisplayStatus(_localization.GetLocalizedString("Installing"));
+                var options = txtBxOptions.Text;
 
-                this.DisplayResult(result);
+                if (ChkBxNeverRestart.Checked && !options.ToLower().Contains("reboot=reallysuppress"))
+                {
+                    options += (!string.IsNullOrEmpty(options)?" ":string.Empty) + "REBOOT=ReallySuppress";
+                }
+                uint result = _targetComputer.InstallProduct(Path.Combine(rootFolder, subFolder, mainFileInfo.Name), options);
+
+                DisplayResult(result);
             }
-            catch (Computer.CopyFailedException ex) 
+            catch (Computer.CopyFailedException ex)
             {
-                this.txtBxResult.Text = ex.Message;
-                this.txtBxResult.BackColor = Color.Orange;
+                Crashes.TrackError(ex);
+                txtBxResult.Text = ex.Message;
+                txtBxResult.BackColor = Color.Orange;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                this.txtBxResult.Text = ex.Message;
-                this.txtBxResult.BackColor = Color.Orange;            
+                Crashes.TrackError(ex);
+                txtBxResult.Text = ex.Message;
+                txtBxResult.BackColor = Color.Orange;
             }
             try
             {
-                DisplayStatus(this._localization.GetLocalizedString("DeletingTemporaryFiles"));
-                System.IO.Directory.Delete(System.IO.Path.Combine(rootFolder, subFolder), true);
+                DisplayStatus(_localization.GetLocalizedString("DeletingTemporaryFiles"));
+                Directory.Delete(Path.Combine(rootFolder, subFolder), true);
                 NetUse.UnMount(rootFolder);
                 DisplayStatus(String.Empty);
             }
-            catch (Exception) { }
-            this.LockUI(true);
+            catch (Exception ex) { Crashes.TrackError(ex); }
+            LockUI(true);
         }
 
         /// <summary>
-        /// Save the path to the main file and close the Form
+        /// Saves the path to the main file and close the Form
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnClose_Click(object sender, EventArgs e)
+        private void BtnClose_Click(object sender, EventArgs e)
         {
             try
             {
-                if (System.IO.File.Exists(this.txtBxLocalPackage.Text))
+                if (File.Exists(txtBxLocalPackage.Text))
                 {
-                    System.IO.FileInfo sourceFile = new System.IO.FileInfo(this.txtBxLocalPackage.Text);
+                    FileInfo sourceFile = new FileInfo(txtBxLocalPackage.Text);
 
-                    if (System.IO.Directory.Exists(sourceFile.DirectoryName))
+                    if (Directory.Exists(sourceFile.DirectoryName))
                     {
                         Properties.Settings.Default.NetworkInstallSource = sourceFile.DirectoryName;
                         Properties.Settings.Default.Save();
                     }
                 }
             }
-            catch (Exception) { }
-            DialogResult = System.Windows.Forms.DialogResult.OK;
+            catch (Exception ex) { Crashes.TrackError(ex); }
+            DialogResult = DialogResult.OK;
         }
 
         // ListBoxes
 
-        private void chkLstFiles_ItemCheck(object sender, ItemCheckEventArgs e)
+        private void ChkLstFiles_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             if (e.NewValue == CheckState.Checked)
-                this.btnRemoveFiles.Enabled = true;
+                btnRemoveFiles.Enabled = true;
             else
             {
-                this.btnRemoveFiles.Enabled = (this.chkLstFiles.CheckedItems != null && this.chkLstFiles.CheckedItems.Count > 1);
+                btnRemoveFiles.Enabled = (chkLstFiles.CheckedItems != null && chkLstFiles.CheckedItems.Count > 1);
             }
         }
 
-        private void chklstFolders_ItemCheck(object sender, ItemCheckEventArgs e)
+        private void ChklstFolders_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             if (e.NewValue == CheckState.Checked)
-                this.btnRemoveFolders.Enabled = true;
+                btnRemoveFolders.Enabled = true;
             else
             {
-                this.btnRemoveFolders.Enabled = (this.chklstFolders.CheckedItems != null && this.chklstFolders.CheckedItems.Count > 1);
+                btnRemoveFolders.Enabled = (chklstFolders.CheckedItems != null && chklstFolders.CheckedItems.Count > 1);
             }
         }
 
         // TextBoxes
 
-        private void txtBxLocation_TextChanged(object sender, EventArgs e)
+        private void TxtBxLocation_TextChanged(object sender, EventArgs e)
         {
-            this.ValidateData();
+            ValidateData();
         }
 
-        private void txtBxLocation_Leave(object sender, EventArgs e)
+        private void TxtBxLocation_Leave(object sender, EventArgs e)
         {
-            this.ValidateData();
+            ValidateData();
         }
 
         #endregion (Events)

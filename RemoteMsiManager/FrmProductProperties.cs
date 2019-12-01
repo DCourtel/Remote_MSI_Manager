@@ -7,7 +7,7 @@ namespace RemoteMsiManager
         internal FrmProductProperties(MsiProduct product)
         {
             InitializeComponent();
-            this.propertyGrid1.SelectedObject = product;
+            propertyGrid1.SelectedObject = product;
         }
     }
 }

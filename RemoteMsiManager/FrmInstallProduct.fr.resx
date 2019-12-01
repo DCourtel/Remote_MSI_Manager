@@ -132,13 +132,13 @@
     <value>149, 332</value>
   </data>
   <data name="txtBxOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 20</value>
+    <value>555, 20</value>
   </data>
   <data name="txtBxResult.Location" type="System.Drawing.Point, System.Drawing">
-    <value>149, 410</value>
+    <value>149, 445</value>
   </data>
   <data name="txtBxResult.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 20</value>
+    <value>555, 20</value>
   </data>
   <data name="lblResult.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -150,10 +150,10 @@
     <value>Résultat : </value>
   </data>
   <data name="txtBxTargetComputer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>149, 358</value>
+    <value>149, 393</value>
   </data>
   <data name="txtBxTargetComputer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 20</value>
+    <value>555, 20</value>
   </data>
   <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -168,7 +168,7 @@
     <value>149, 23</value>
   </data>
   <data name="txtBxLocalPackage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 20</value>
+    <value>413, 20</value>
   </data>
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -228,19 +228,19 @@
     <value>149, 76</value>
   </data>
   <data name="chkLstFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 94</value>
+    <value>413, 94</value>
   </data>
   <data name="chklstFolders.Location" type="System.Drawing.Point, System.Drawing">
     <value>149, 206</value>
   </data>
   <data name="chklstFolders.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 94</value>
+    <value>413, 94</value>
   </data>
   <data name="txtBxStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>149, 384</value>
+    <value>149, 419</value>
   </data>
   <data name="txtBxStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 20</value>
+    <value>555, 20</value>
   </data>
   <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -255,7 +255,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>486, 452</value>
+    <value>568, 478</value>
   </data>
   <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
     <value>136, 40</value>
@@ -267,7 +267,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnRemoveFolders.Location" type="System.Drawing.Point, System.Drawing">
-    <value>486, 260</value>
+    <value>568, 260</value>
   </data>
   <data name="btnRemoveFolders.Size" type="System.Drawing.Size, System.Drawing">
     <value>136, 40</value>
@@ -279,7 +279,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnAddFolders.Location" type="System.Drawing.Point, System.Drawing">
-    <value>486, 206</value>
+    <value>568, 206</value>
   </data>
   <data name="btnAddFolders.Size" type="System.Drawing.Size, System.Drawing">
     <value>136, 40</value>
@@ -291,7 +291,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnRemoveFiles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>486, 130</value>
+    <value>568, 130</value>
   </data>
   <data name="btnRemoveFiles.Size" type="System.Drawing.Size, System.Drawing">
     <value>136, 40</value>
@@ -303,7 +303,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnAddAdditionnalFiles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>486, 76</value>
+    <value>568, 76</value>
   </data>
   <data name="btnAddAdditionnalFiles.Size" type="System.Drawing.Size, System.Drawing">
     <value>136, 40</value>
@@ -315,7 +315,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnBrowse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>486, 12</value>
+    <value>568, 12</value>
   </data>
   <data name="btnBrowse.Size" type="System.Drawing.Size, System.Drawing">
     <value>136, 40</value>
@@ -329,10 +329,16 @@
   <data name="btnInstall.Text" xml:space="preserve">
     <value>&amp;Installer</value>
   </data>
-  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>480, 540</value>
+  <data name="ChkBxNeverRestart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>149, 358</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Installer un Produit MSI</value>
+  <data name="ChkBxNeverRestart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 17</value>
+  </data>
+  <data name="ChkBxNeverRestart.Text" xml:space="preserve">
+    <value>Ne pas redémarrer l’ordinateur</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>716, 530</value>
   </data>
 </root>

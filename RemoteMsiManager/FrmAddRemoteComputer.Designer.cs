@@ -51,7 +51,6 @@
             resources.ApplyResources(this.btnCancel, "btnCancel");
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Name = "btnCancel";
-            this.toolTip1.SetToolTip(this.btnCancel, resources.GetString("btnCancel.ToolTip"));
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // btnOk
@@ -59,56 +58,48 @@
             resources.ApplyResources(this.btnOk, "btnOk");
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOk.Name = "btnOk";
-            this.toolTip1.SetToolTip(this.btnOk, resources.GetString("btnOk.ToolTip"));
             this.btnOk.UseVisualStyleBackColor = true;
-            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            this.btnOk.Click += new System.EventHandler(this.BtnOk_Click);
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.toolTip1.SetToolTip(this.label1, resources.GetString("label1.ToolTip"));
             // 
             // txtBxComputerName
             // 
             resources.ApplyResources(this.txtBxComputerName, "txtBxComputerName");
             this.txtBxComputerName.Name = "txtBxComputerName";
-            this.toolTip1.SetToolTip(this.txtBxComputerName, resources.GetString("txtBxComputerName.ToolTip"));
-            this.txtBxComputerName.TextChanged += new System.EventHandler(this.txtBxes_TextChanged);
-            this.txtBxComputerName.Leave += new System.EventHandler(this.txtBxComputerName_Leave);
+            this.txtBxComputerName.TextChanged += new System.EventHandler(this.TxtBxes_TextChanged);
+            this.txtBxComputerName.Leave += new System.EventHandler(this.TxtBxComputerName_Leave);
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.toolTip1.SetToolTip(this.label2, resources.GetString("label2.ToolTip"));
             // 
             // txtBxUsername
             // 
             resources.ApplyResources(this.txtBxUsername, "txtBxUsername");
             this.txtBxUsername.Name = "txtBxUsername";
-            this.toolTip1.SetToolTip(this.txtBxUsername, resources.GetString("txtBxUsername.ToolTip"));
-            this.txtBxUsername.TextChanged += new System.EventHandler(this.txtBxes_TextChanged);
+            this.txtBxUsername.TextChanged += new System.EventHandler(this.TxtBxes_TextChanged);
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.toolTip1.SetToolTip(this.label3, resources.GetString("label3.ToolTip"));
             // 
             // txtBxPassword
             // 
             resources.ApplyResources(this.txtBxPassword, "txtBxPassword");
             this.txtBxPassword.Name = "txtBxPassword";
-            this.toolTip1.SetToolTip(this.txtBxPassword, resources.GetString("txtBxPassword.ToolTip"));
             this.txtBxPassword.UseSystemPasswordChar = true;
-            this.txtBxPassword.TextChanged += new System.EventHandler(this.txtBxes_TextChanged);
+            this.txtBxPassword.TextChanged += new System.EventHandler(this.TxtBxes_TextChanged);
             // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.toolTip1.SetToolTip(this.label4, resources.GetString("label4.ToolTip"));
             // 
             // btnPing
             // 
@@ -118,9 +109,9 @@
             this.btnPing.TabStop = false;
             this.toolTip1.SetToolTip(this.btnPing, resources.GetString("btnPing.ToolTip"));
             this.btnPing.UseVisualStyleBackColor = true;
-            this.btnPing.Click += new System.EventHandler(this.btnPing_Click);
-            this.btnPing.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnShowPassword_MouseDown);
-            this.btnPing.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnShowPassword_MouseUp);
+            this.btnPing.Click += new System.EventHandler(this.BtnPing_Click);
+            this.btnPing.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnShowPassword_MouseDown);
+            this.btnPing.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnShowPassword_MouseUp);
             // 
             // btnShowPassword
             // 
@@ -128,24 +119,21 @@
             this.btnShowPassword.Image = global::RemoteMsiManager.Properties.Resources.Eye16x16;
             this.btnShowPassword.Name = "btnShowPassword";
             this.btnShowPassword.TabStop = false;
-            this.toolTip1.SetToolTip(this.btnShowPassword, resources.GetString("btnShowPassword.ToolTip"));
             this.btnShowPassword.UseVisualStyleBackColor = true;
-            this.btnShowPassword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnShowPassword_MouseDown);
-            this.btnShowPassword.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnShowPassword_MouseUp);
+            this.btnShowPassword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnShowPassword_MouseDown);
+            this.btnShowPassword.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnShowPassword_MouseUp);
             // 
             // btnTestCredential
             // 
             resources.ApplyResources(this.btnTestCredential, "btnTestCredential");
             this.btnTestCredential.Name = "btnTestCredential";
-            this.toolTip1.SetToolTip(this.btnTestCredential, resources.GetString("btnTestCredential.ToolTip"));
             this.btnTestCredential.UseVisualStyleBackColor = false;
-            this.btnTestCredential.Click += new System.EventHandler(this.btnTestCredential_Click);
+            this.btnTestCredential.Click += new System.EventHandler(this.BtnTestCredential_Click);
             // 
             // label5
             // 
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.toolTip1.SetToolTip(this.label5, resources.GetString("label5.ToolTip"));
             // 
             // FrmAddRemoteComputer
             // 
@@ -169,7 +157,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmAddRemoteComputer";
             this.ShowInTaskbar = false;
-            this.toolTip1.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.ResumeLayout(false);
             this.PerformLayout();
 

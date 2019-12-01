@@ -128,13 +128,13 @@
     <value>145, 332</value>
   </data>
   <data name="txtBxOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>445, 20</value>
+    <value>629, 20</value>
   </data>
   <data name="txtBxResult.Location" type="System.Drawing.Point, System.Drawing">
-    <value>145, 410</value>
+    <value>145, 445</value>
   </data>
   <data name="txtBxResult.Size" type="System.Drawing.Size, System.Drawing">
-    <value>445, 20</value>
+    <value>629, 20</value>
   </data>
   <data name="lblResult.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 13</value>
@@ -143,10 +143,10 @@
     <value>Resultado :</value>
   </data>
   <data name="txtBxTargetComputer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>145, 358</value>
+    <value>145, 393</value>
   </data>
   <data name="txtBxTargetComputer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>445, 20</value>
+    <value>629, 20</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 13</value>
@@ -158,7 +158,7 @@
     <value>146, 23</value>
   </data>
   <data name="txtBxLocalPackage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>444, 20</value>
+    <value>472, 20</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>143, 46</value>
@@ -207,25 +207,25 @@
     <value>146, 76</value>
   </data>
   <data name="chkLstFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>444, 94</value>
+    <value>472, 94</value>
   </data>
   <data name="chklstFolders.Location" type="System.Drawing.Point, System.Drawing">
     <value>145, 206</value>
   </data>
   <data name="chklstFolders.Size" type="System.Drawing.Size, System.Drawing">
-    <value>445, 94</value>
+    <value>473, 94</value>
   </data>
   <data name="txtBxStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>145, 384</value>
+    <value>145, 419</value>
   </data>
   <data name="txtBxStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>445, 20</value>
+    <value>629, 20</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Estado :</value>
   </data>
   <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>596, 452</value>
+    <value>624, 478</value>
   </data>
   <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 40</value>
@@ -234,7 +234,7 @@
     <value>&amp;Fechar</value>
   </data>
   <data name="btnRemoveFolders.Location" type="System.Drawing.Point, System.Drawing">
-    <value>596, 260</value>
+    <value>624, 260</value>
   </data>
   <data name="btnRemoveFolders.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 40</value>
@@ -246,7 +246,7 @@
     <value>R&amp;emover Pastas</value>
   </data>
   <data name="btnAddFolders.Location" type="System.Drawing.Point, System.Drawing">
-    <value>596, 206</value>
+    <value>624, 206</value>
   </data>
   <data name="btnAddFolders.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 40</value>
@@ -258,7 +258,7 @@
     <value>A&amp;dicionar Pastas...</value>
   </data>
   <data name="btnRemoveFiles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>596, 130</value>
+    <value>624, 130</value>
   </data>
   <data name="btnRemoveFiles.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 40</value>
@@ -270,7 +270,7 @@
     <value>&amp;Remover Ficheiros</value>
   </data>
   <data name="btnAddAdditionnalFiles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>596, 76</value>
+    <value>624, 76</value>
   </data>
   <data name="btnAddAdditionnalFiles.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 40</value>
@@ -282,7 +282,7 @@
     <value>&amp;Adicionar Ficheiros...</value>
   </data>
   <data name="btnBrowse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>596, 12</value>
+    <value>624, 12</value>
   </data>
   <data name="btnBrowse.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 40</value>
@@ -299,17 +299,16 @@
   <data name="btnInstall.Text" xml:space="preserve">
     <value>&amp;Instalar</value>
   </data>
+  <data name="ChkBxNeverRestart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>145, 358</value>
+  </data>
+  <data name="ChkBxNeverRestart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 17</value>
+  </data>
+  <data name="ChkBxNeverRestart.Text" xml:space="preserve">
+    <value>Nunca reinicie o computador</value>
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>758, 504</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Inherit</value>
-  </data>
-  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>500, 540</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Instale um Produto MSI</value>
+    <value>786, 530</value>
   </data>
 </root>

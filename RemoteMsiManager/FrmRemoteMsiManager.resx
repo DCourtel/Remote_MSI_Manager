@@ -175,7 +175,7 @@
     <value>0, 0</value>
   </data>
   <data name="dgvComputers.Size" type="System.Drawing.Size, System.Drawing">
-    <value>351, 275</value>
+    <value>337, 254</value>
   </data>
   <data name="dgvComputers.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -253,7 +253,7 @@
     <value>0, 0</value>
   </data>
   <data name="dgvProducts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>680, 275</value>
+    <value>539, 254</value>
   </data>
   <data name="dgvProducts.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -283,10 +283,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1035, 275</value>
+    <value>880, 254</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>351</value>
+    <value>337</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -337,7 +337,7 @@
     <value>15, 31</value>
   </data>
   <data name="txtBxPattern.Size" type="System.Drawing.Size, System.Drawing">
-    <value>914, 20</value>
+    <value>771, 20</value>
   </data>
   <data name="txtBxPattern.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -391,7 +391,7 @@
     <value>15, 70</value>
   </data>
   <data name="txtBxExceptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>914, 20</value>
+    <value>771, 20</value>
   </data>
   <data name="txtBxExceptions.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -411,15 +411,6 @@
   <metadata name="ctxMnuProducts.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>35, 25</value>
   </metadata>
-  <data name="ctxMnuProducts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 160</value>
-  </data>
-  <data name="&gt;&gt;ctxMnuProducts.Name" xml:space="preserve">
-    <value>ctxMnuProducts</value>
-  </data>
-  <data name="&gt;&gt;ctxMnuProducts.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="tlStrCopyMsiProductCode.Size" type="System.Drawing.Size, System.Drawing">
     <value>225, 22</value>
   </data>
@@ -468,11 +459,20 @@
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
     <value>222, 6</value>
   </data>
+  <data name="ctxMnuProducts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 160</value>
+  </data>
+  <data name="&gt;&gt;ctxMnuProducts.Name" xml:space="preserve">
+    <value>ctxMnuProducts</value>
+  </data>
+  <data name="&gt;&gt;ctxMnuProducts.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="btnDeleteExceptionFilter.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
   <data name="btnDeleteExceptionFilter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>935, 67</value>
+    <value>792, 70</value>
   </data>
   <data name="btnDeleteExceptionFilter.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
@@ -496,7 +496,7 @@
     <value>Top, Right</value>
   </data>
   <data name="btnDeletePatternFilter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>935, 28</value>
+    <value>792, 31</value>
   </data>
   <data name="btnDeletePatternFilter.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
@@ -520,7 +520,7 @@
     <value>Top, Right</value>
   </data>
   <data name="btnRefreshFilter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>965, 29</value>
+    <value>822, 29</value>
   </data>
   <data name="btnRefreshFilter.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 63</value>
@@ -547,7 +547,7 @@
     <value>MiddleLeft</value>
   </data>
   <data name="btnRemoveComputers.Location" type="System.Drawing.Point, System.Drawing">
-    <value>141, 379</value>
+    <value>130, 358</value>
   </data>
   <data name="btnRemoveComputers.Size" type="System.Drawing.Size, System.Drawing">
     <value>123, 46</value>
@@ -580,7 +580,7 @@
     <value>MiddleLeft</value>
   </data>
   <data name="btnAddRemoteComputer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 379</value>
+    <value>1, 358</value>
   </data>
   <data name="btnAddRemoteComputer.Size" type="System.Drawing.Size, System.Drawing">
     <value>123, 46</value>
@@ -616,7 +616,7 @@
     <value>MiddleLeft</value>
   </data>
   <data name="btnQueryComputer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>270, 379</value>
+    <value>259, 358</value>
   </data>
   <data name="btnQueryComputer.Size" type="System.Drawing.Size, System.Drawing">
     <value>123, 46</value>
@@ -652,7 +652,7 @@
     <value>MiddleLeft</value>
   </data>
   <data name="btnInstallProduct.Location" type="System.Drawing.Point, System.Drawing">
-    <value>577, 379</value>
+    <value>635, 358</value>
   </data>
   <data name="btnInstallProduct.Size" type="System.Drawing.Size, System.Drawing">
     <value>118, 46</value>
@@ -688,7 +688,7 @@
     <value>MiddleLeft</value>
   </data>
   <data name="btnUninstall.Location" type="System.Drawing.Point, System.Drawing">
-    <value>437, 379</value>
+    <value>511, 358</value>
   </data>
   <data name="btnUninstall.Size" type="System.Drawing.Size, System.Drawing">
     <value>118, 46</value>
@@ -721,7 +721,7 @@
     <value>MiddleLeft</value>
   </data>
   <data name="btnQuit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>949, 379</value>
+    <value>806, 358</value>
   </data>
   <data name="btnQuit.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 46</value>
@@ -750,11 +750,14 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>44</value>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1036, 437</value>
+    <value>884, 411</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2423,7 +2426,7 @@
 </value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>810, 330</value>
+    <value>900, 450</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>

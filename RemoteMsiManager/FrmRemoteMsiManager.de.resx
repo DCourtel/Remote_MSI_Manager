@@ -135,7 +135,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="dgvComputers.Size" type="System.Drawing.Size, System.Drawing">
-    <value>347, 275</value>
+    <value>397, 254</value>
   </data>
   <data name="dgvComputers.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -150,13 +150,16 @@
     <value>116</value>
   </data>
   <data name="dgvProducts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>684, 275</value>
+    <value>607, 254</value>
   </data>
   <data name="dgvProducts.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
+  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1008, 254</value>
+  </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>347</value>
+    <value>397</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>372, 13</value>
@@ -164,11 +167,20 @@
   <data name="label1.Text" xml:space="preserve">
     <value>Produkte anzeigen, deren MSI Produktcode zum angegebenen Muster passt:</value>
   </data>
+  <data name="txtBxPattern.Size" type="System.Drawing.Size, System.Drawing">
+    <value>899, 20</value>
+  </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 13</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Ausgenommen diese Produkte:</value>
+  </data>
+  <data name="txtBxExceptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>899, 20</value>
+  </data>
+  <data name="ctxMnuProducts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 160</value>
   </data>
   <data name="tlStrCopyMsiProductCode.Size" type="System.Drawing.Size, System.Drawing">
     <value>274, 22</value>
@@ -218,11 +230,17 @@
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
     <value>271, 6</value>
   </data>
-  <data name="ctxMnuProducts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>275, 160</value>
+  <data name="btnDeleteExceptionFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>920, 70</value>
+  </data>
+  <data name="btnDeletePatternFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>920, 31</value>
+  </data>
+  <data name="btnRefreshFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>950, 29</value>
   </data>
   <data name="btnRemoveComputers.Location" type="System.Drawing.Point, System.Drawing">
-    <value>169, 379</value>
+    <value>158, 358</value>
   </data>
   <data name="btnRemoveComputers.Size" type="System.Drawing.Size, System.Drawing">
     <value>151, 46</value>
@@ -237,7 +255,7 @@
     <value>&amp;Remote Computer hinzufügen</value>
   </data>
   <data name="btnQueryComputer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>326, 379</value>
+    <value>315, 358</value>
   </data>
   <data name="btnQueryComputer.Size" type="System.Drawing.Size, System.Drawing">
     <value>151, 46</value>
@@ -246,7 +264,7 @@
     <value>Markierte(n) Computer &amp;abfragen</value>
   </data>
   <data name="btnInstallProduct.Location" type="System.Drawing.Point, System.Drawing">
-    <value>712, 379</value>
+    <value>706, 358</value>
   </data>
   <data name="btnInstallProduct.Size" type="System.Drawing.Size, System.Drawing">
     <value>151, 46</value>
@@ -255,7 +273,7 @@
     <value>MSI Produkt &amp;installieren</value>
   </data>
   <data name="btnUninstall.Location" type="System.Drawing.Point, System.Drawing">
-    <value>555, 379</value>
+    <value>549, 358</value>
   </data>
   <data name="btnUninstall.Size" type="System.Drawing.Size, System.Drawing">
     <value>151, 46</value>
@@ -263,8 +281,14 @@
   <data name="btnUninstall.Text" xml:space="preserve">
     <value>Markiertes Produkt &amp;deinstallieren</value>
   </data>
+  <data name="btnQuit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>934, 358</value>
+  </data>
   <data name="btnQuit.Text" xml:space="preserve">
     <value>Ende</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1012, 411</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1932,7 +1956,11 @@
         ////////////////////////
 </value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>980, 330</value>
+    <value>1028, 350</value>
   </data>
 </root>

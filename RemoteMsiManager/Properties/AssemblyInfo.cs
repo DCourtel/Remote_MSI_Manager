@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
 [assembly: AssemblyTitle("Remote Msi Manager")]
-[assembly: AssemblyDescription("A little application to show MSI Products installed on the local or remote computer. It, also, allow to uninstall these MSI Products.")]
+[assembly: AssemblyDescription("A small application to show the MSI Products installed on the local or a remote computer. It, also, allows to uninstall those MSI Products.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("EasyCompany")]
 [assembly: AssemblyProduct("RemoteMsiManager")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // Vous pouvez spécifier toutes les valeurs ou indiquer les numéros de build et de révision par défaut 
 // en utilisant '*', comme indiqué ci-dessous :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.1706.11")]
-[assembly: AssemblyFileVersion("1.0.1706.11")]
+[assembly: AssemblyVersion("1.0.1912.1")]
+[assembly: AssemblyFileVersion("1.0.1912.1")]

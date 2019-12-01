@@ -166,7 +166,4 @@
   <data name="btnTestCredential.Text" xml:space="preserve">
     <value>&amp;Teste</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Adicione um computador remoto</value>
-  </data>
 </root>

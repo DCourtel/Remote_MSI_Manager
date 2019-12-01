@@ -131,7 +131,7 @@
     <value>124, 12</value>
   </data>
   <data name="txtBxComputerName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 20</value>
+    <value>197, 20</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>106, 13</value>
@@ -143,7 +143,7 @@
     <value>124, 96</value>
   </data>
   <data name="txtBxUsername.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 20</value>
+    <value>175, 20</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 13</value>
@@ -155,7 +155,7 @@
     <value>124, 122</value>
   </data>
   <data name="txtBxPassword.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 20</value>
+    <value>155, 20</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 13</value>
@@ -163,10 +163,13 @@
   <data name="label4.Text" xml:space="preserve">
     <value>Учетная запись для подключения:</value>
   </data>
+  <data name="btnShowPassword.Location" type="System.Drawing.Point, System.Drawing">
+    <value>279, 121</value>
+  </data>
+  <data name="btnTestCredential.Location" type="System.Drawing.Point, System.Drawing">
+    <value>305, 96</value>
+  </data>
   <data name="btnTestCredential.Text" xml:space="preserve">
     <value>тест</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Добавить удаленный компьютер</value>
   </data>
 </root>

@@ -138,7 +138,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="dgvComputers.Size" type="System.Drawing.Size, System.Drawing">
-    <value>317, 275</value>
+    <value>351, 269</value>
   </data>
   <data name="identifyingNumber.HeaderText" xml:space="preserve">
     <value>Produit MSI</value>
@@ -156,10 +156,13 @@
     <value>106</value>
   </data>
   <data name="dgvProducts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>714, 275</value>
+    <value>620, 269</value>
+  </data>
+  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>975, 269</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>317</value>
+    <value>351</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -171,6 +174,9 @@
   <data name="label1.Text" xml:space="preserve">
     <value>Montrer les Produits MSI pour lesquels le code «MSI Product» correspond à ces motifs :</value>
   </data>
+  <data name="txtBxPattern.Size" type="System.Drawing.Size, System.Drawing">
+    <value>866, 20</value>
+  </data>
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -179,6 +185,9 @@
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Sauf ceux-ci : </value>
+  </data>
+  <data name="txtBxExceptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>866, 20</value>
   </data>
   <data name="tlStrCopyMsiProductCode.Size" type="System.Drawing.Size, System.Drawing">
     <value>275, 22</value>
@@ -234,17 +243,26 @@
   <data name="btnDeleteExceptionFilter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="btnDeleteExceptionFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>887, 70</value>
+  </data>
   <data name="btnDeletePatternFilter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="btnDeletePatternFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>887, 31</value>
+  </data>
   <data name="btnRefreshFilter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="btnRefreshFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>917, 29</value>
   </data>
   <data name="btnRemoveComputers.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnRemoveComputers.Location" type="System.Drawing.Point, System.Drawing">
-    <value>156, 379</value>
+    <value>156, 373</value>
   </data>
   <data name="btnRemoveComputers.Size" type="System.Drawing.Size, System.Drawing">
     <value>159, 46</value>
@@ -256,7 +274,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnAddRemoteComputer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 379</value>
+    <value>1, 373</value>
   </data>
   <data name="btnAddRemoteComputer.Size" type="System.Drawing.Size, System.Drawing">
     <value>149, 46</value>
@@ -268,7 +286,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnQueryComputer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>321, 379</value>
+    <value>321, 373</value>
   </data>
   <data name="btnQueryComputer.Size" type="System.Drawing.Size, System.Drawing">
     <value>159, 46</value>
@@ -280,7 +298,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnInstallProduct.Location" type="System.Drawing.Point, System.Drawing">
-    <value>711, 379</value>
+    <value>694, 373</value>
   </data>
   <data name="btnInstallProduct.Size" type="System.Drawing.Size, System.Drawing">
     <value>157, 46</value>
@@ -292,7 +310,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnUninstall.Location" type="System.Drawing.Point, System.Drawing">
-    <value>548, 379</value>
+    <value>531, 373</value>
   </data>
   <data name="btnUninstall.Size" type="System.Drawing.Size, System.Drawing">
     <value>157, 46</value>
@@ -303,8 +321,14 @@
   <data name="btnQuit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="btnQuit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>901, 373</value>
+  </data>
   <data name="btnQuit.Text" xml:space="preserve">
     <value>&amp;Quitter</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>979, 426</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1973,6 +1997,6 @@
 </value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>980, 330</value>
+    <value>995, 465</value>
   </data>
 </root>

@@ -14,7 +14,7 @@ namespace RemoteMsiManager
     {
         #region (Error codes definition)
 
-        private static Dictionary<UInt32, string> _errorCodes = new Dictionary<UInt32, string> 
+        private static Dictionary<uint, string> _errorCodes = new Dictionary<uint, string>
         {
             {0,"The action completed successfully."},
             {13, "The data is invalid."},
@@ -74,7 +74,7 @@ namespace RemoteMsiManager
             {1652, "Windows Installer is not accessible when the computer is in Safe Mode. Exit Safe Mode and try again or try using System Restore to return your computer to a previous state. Available beginning with Windows Installer version 4.0."},
             {1653, "Could not perform a multiple-package transaction because rollback has been disabled. Multiple-Package Installations cannot run if rollback is disabled. Available beginning with Windows Installer version 4.5."},
             {1654, "The app that you are trying to run is not supported on this version of Windows. A Windows Installer package, patch, or transform that has not been signed by Microsoft cannot be installed on an ARM computer."},
-            {3010, "A restart is required to complete the install. This message is indicative of a success. This does not include installs where the ForceReboot action is run."}        
+            {3010, "A restart is required to complete the install. This message is indicative of a success. This does not include installs where the ForceReboot action is run."}
         };
 
         #endregion (Error codes definition)
@@ -97,7 +97,7 @@ namespace RemoteMsiManager
             Unknown = 255
         }
 
-        private static char[] versionSeparator = new char[] { '.' };
+        private static readonly char[] versionSeparator = new char[] { '.' };
 
         /// <summary>
         /// Constructor for the MsiProduct class.
@@ -107,195 +107,63 @@ namespace RemoteMsiManager
         /// <param name="version">Version of the product</param>
         public MsiProduct(String identifyingNumber, string name, string version)
         {
-            this._idendifyingNumber = !String.IsNullOrEmpty(identifyingNumber) ? identifyingNumber : String.Empty;
-            this._name = !String.IsNullOrEmpty(name) ? name : String.Empty;
-            this._version = !String.IsNullOrEmpty(version) ? version : String.Empty;
+            IdentifyingNumber = !String.IsNullOrEmpty(identifyingNumber) ? identifyingNumber : String.Empty;
+            Name = !String.IsNullOrEmpty(name) ? name : String.Empty;
+            Version = !String.IsNullOrEmpty(version) ? version : String.Empty;
         }
 
         #region (Properties)
 
-        private Assignment_Type _assignmentType = Assignment_Type.Unknown;
-        [ReadOnly(true)]
-        public Assignment_Type AssignmentType
-        {
-            get { return this._assignmentType; }
-            set { this._assignmentType = value; }
-        }
+        public Assignment_Type AssignmentType { get; internal set; } = Assignment_Type.Unknown;
 
-        private string _caption = String.Empty;
-        [ReadOnly(true)]
-        public string Caption
-        {
-            get { return this._caption; }
-            set { this._caption = value; }
-        }
+        public string Caption { get; internal set; } = String.Empty;
 
-        private string _description = String.Empty;
-        [ReadOnly(true)]
-        public string Description
-        {
-            get { return this._description; }
-            set { this._description = value; }
-        }
+        public string Description { get; internal set; } = String.Empty;
 
-        private string _helpLink = String.Empty;
-        [ReadOnly(true)]
-        public string HelpLink
-        {
-            get { return this._helpLink; }
-            set { this._helpLink = value; }
-        }
+        public string HelpLink { get; internal set; } = String.Empty;
 
-        private string _idendifyingNumber = String.Empty;
-        [ReadOnly(true)]
-        public string IdentifyingNumber
-        {
-            get { return this._idendifyingNumber; }
-            set { this._idendifyingNumber = value; }
-        }
+        public string IdentifyingNumber { get; internal set; } = String.Empty;
 
-        private string _installDate = String.Empty;
-        [ReadOnly(true)]
-        public string InstallDate
-        {
-            get { return this._installDate; }
-            set { this._installDate = value; }
-        }
+        public string InstallDate { get; internal set; } = String.Empty;
 
-        private string _installLocation = String.Empty;
-        [ReadOnly(true)]
-        public string InstallLocation
-        {
-            get { return this._installLocation; }
-            set { this._installLocation = value; }
-        }
+        public string InstallLocation { get; internal set; } = String.Empty;
 
-        private Install_State _installState = Install_State.Unknown;
-        [ReadOnly(true)]
-        public Install_State InstallState
-        {
-            get { return this._installState; }
-            set { this._installState = value; }
-        }
+        public Install_State InstallState { get; internal set; } = Install_State.Unknown;
 
-        private string _installSource = String.Empty;
-        [ReadOnly(true)]
-        public string InstallSource
-        {
-            get { return this._installSource; }
-            set { this._installSource = value; }
-        }
+        public string InstallSource { get; internal set; } = String.Empty;
 
-        private string _language = String.Empty;
-        [ReadOnly(true)]
-        public string Language
-        {
-            get { return this._language; }
-            set { this._language = value; }
-        }
+        public string Language { get; internal set; } = String.Empty;
 
-        private string _localPackage = String.Empty;
-        [ReadOnly(true)]
-        public string LocalPackage
-        {
-            get { return this._localPackage; }
-            set { this._localPackage = value; }
-        }
+        public string LocalPackage { get; internal set; } = String.Empty;
 
-        private string _name = String.Empty;
-        [ReadOnly(true)]
-        public string Name
-        {
-            get { return this._name; }
-            set { this._name = value; }
-        }
+        public string Name { get; internal set; } = String.Empty;
 
-        private string _packageCache = String.Empty;
-        [ReadOnly(true)]
-        public string PackageCache
-        {
-            get { return this._packageCache; }
-            set { this._packageCache = value; }
-        }
+        public string PackageCache { get; internal set; } = String.Empty;
 
-        private string _packageCode = String.Empty;
-        [ReadOnly(true)]
-        public string PackageCode
-        {
-            get { return this._packageCode; }
-            set { this._packageCode = value; }
-        }
+        public string PackageCode { get; internal set; } = String.Empty;
 
-        private string _packageName = String.Empty;
-        [ReadOnly(true)]
-        public string PackageName
-        {
-            get { return this._packageName; }
-            set { this._packageName = value; }
-        }
+        public string PackageName { get; internal set; } = String.Empty;
 
-        private string _productId = String.Empty;
-        [ReadOnly(true)]
-        public string ProductID
-        {
-            get { return this._productId; }
-            set { this._productId = value; }
-        }
+        public string ProductID { get; internal set; } = String.Empty;
 
-        private string _regOwner = String.Empty;
-        [ReadOnly(true)]
-        public string RegOwner
-        {
-            get { return this._regOwner; }
-            set { this._regOwner = value; }
-        }
+        public string RegOwner { get; internal set; } = String.Empty;
 
-        private string _transform = String.Empty;
-        [ReadOnly(true)]
-        public string Transform
-        {
-            get { return this._transform; }
-            set { this._transform = value; }
-        }
+        public string Transform { get; internal set; } = String.Empty;
 
-        private string _UrlInfoAbout = String.Empty;
-        [ReadOnly(true)]
-        public string UrlInfoAbout
-        {
-            get { return this._UrlInfoAbout; }
-            set { this._UrlInfoAbout = value; }
-        }
+        public string UrlInfoAbout { get; internal set; } = String.Empty;
 
-        private string _UrlUpdateInfo = String.Empty;
-        [ReadOnly(true)]
-        public string UrlUpdateInfo
-        {
-            get { return this._UrlUpdateInfo; }
-            set { this._UrlUpdateInfo = value; }
-        }
+        public string UrlUpdateInfo { get; internal set; } = String.Empty;
 
-        private string _vendor = String.Empty;
-        [ReadOnly(true)]
-        public string Vendor
-        {
-            get { return this._vendor; }
-            set { this._vendor = value; }
-        }
+        public string Vendor { get; internal set; } = String.Empty;
 
-        private string _version = String.Empty;
-        [ReadOnly(true)]
-        public string Version
-        {
-            get { return this._version; }
-            set { this._version = value; }
-        }
+        public string Version { get; set; } = String.Empty;
 
         #endregion (Properties)
 
         #region (Methods)
 
         /// <summary>
-        /// Take a dotted version string (8.0.650.17) and return a string where all version numbers have been concatened and padded with "0" to get a 5 digits number (00008000000065000017)
+        /// Take a dotted version string (8.0.650.17) and returns a string where all version numbers have been concatened and padded with "0" to get a 5 digits number (00008000000065000017)
         /// </summary>
         /// <param name="dottedVersion">A string like "8.0.650.17"</param>
         /// <returns>A string like "00008000000065000017"</returns>
@@ -317,7 +185,7 @@ namespace RemoteMsiManager
         }
 
         /// <summary>
-        /// Return the installation date formatted like "DD/MM/YYYY"
+        /// Returns the installation date formatted like "DD/MM/YYYY"
         /// </summary>
         /// <returns>A string representing the install date formatted as "DD/MM/YYYY"</returns>
         public static string GetFormattedInstallDate(string unformattedDate)
@@ -333,7 +201,7 @@ namespace RemoteMsiManager
         }
 
         /// <summary>
-        /// Replace WQL like «%» and «_» characters by corresponding RegExp pattern
+        /// Replaces WQL like «%» and «_» characters by corresponding RegExp pattern
         /// </summary>
         /// <param name="pattern">A WQL like string that can contains «%» and «_» characters</param>
         /// <returns>A RegExp pattern where «%» and «_» characters have been replaced</returns>
@@ -343,7 +211,7 @@ namespace RemoteMsiManager
         }
 
         /// <summary>
-        /// Determin whether or not a MsiCode match a RegExp pattern
+        /// Determins whether a MsiCode match a RegExp pattern
         /// </summary>
         /// <param name="msiCode">MsiCode to test against</param>
         /// <param name="pattern">A RegExp pattern</param>
@@ -372,7 +240,7 @@ namespace RemoteMsiManager
         }
 
         /// <summary>
-        /// Remove all characters from a string that are not include in "ABCDEFabcdef0123456789-;%_"
+        /// Removes all characters from a string that are not include in "ABCDEFabcdef0123456789-;%_"
         /// </summary>
         /// <param name="text">The string from where to remove unwanted characters</param>
         /// <returns>A string where all unwanted characters have been removed</returns>
@@ -404,7 +272,7 @@ namespace RemoteMsiManager
         }
 
         /// <summary>
-        /// Split a string using ";" as a separator
+        /// Splits a string using ";" as a separator
         /// </summary>
         /// <param name="textToSplit">Text to split</param>
         /// <returns>A list of string</returns>
@@ -420,13 +288,13 @@ namespace RemoteMsiManager
 
             return msiProducts;
         }
-        
+
         /// <summary>
         /// Gets the error message for the provided error codes as defined on https://msdn.microsoft.com/en-us/library/windows/desktop/aa376931(v=vs.85).aspx
         /// </summary>
         /// <param name="errorCode">An MSI error code.</param>
         /// <returns>The error message for the provided error code.</returns>
-        public static string GetErrorMessage(UInt32 errorCode)
+        public static string GetErrorMessage(uint errorCode)
         {
             if (_errorCodes.ContainsKey(errorCode))
                 return _errorCodes[errorCode];
@@ -434,21 +302,21 @@ namespace RemoteMsiManager
         }
 
         /// <summary>
-        /// Allow to know if the error code is indicative of a success. 
+        /// Allows to know if the error code is indicative of a success. 
         /// </summary>
         /// <param name="errorCode">An MSI error code.</param>
         /// <returns>True if the error code is indicative of a success.</returns>
-        public static bool IsSuccess(UInt32 errorCode)
+        public static bool IsSuccess(uint errorCode)
         {
             return (errorCode == 0 || errorCode == 1641 || errorCode == 3010);
         }
 
         /// <summary>
-        /// Allow to know if a successfull installation need a reboot.
+        /// Allows to know if a successfull installation need a reboot.
         /// </summary>
         /// <param name="errorCode">An error code for a successfull installation.</param>
         /// <returns>True if the installation need a reboot to complete.</returns>
-        public static bool IsRebootNeeded(UInt32 errorCode)
+        public static bool IsRebootNeeded(uint errorCode)
         {
             return (errorCode == 1641 || errorCode == 3010);
         }

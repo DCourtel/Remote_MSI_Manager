@@ -141,7 +141,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="dgvComputers.Size" type="System.Drawing.Size, System.Drawing">
-    <value>358, 275</value>
+    <value>366, 255</value>
   </data>
   <data name="identifyingNumber.HeaderText" xml:space="preserve">
     <value>Продукт MSI</value>
@@ -165,10 +165,13 @@
     <value>104</value>
   </data>
   <data name="dgvProducts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>673, 275</value>
+    <value>530, 255</value>
+  </data>
+  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>900, 255</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>358</value>
+    <value>366</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>426, 13</value>
@@ -176,11 +179,20 @@
   <data name="label1.Text" xml:space="preserve">
     <value>Показать продукты MSI для которых код продукта соответствует этому шаблону :</value>
   </data>
+  <data name="txtBxPattern.Size" type="System.Drawing.Size, System.Drawing">
+    <value>791, 20</value>
+  </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 13</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Исключения :</value>
+  </data>
+  <data name="txtBxExceptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>791, 20</value>
+  </data>
+  <data name="ctxMnuProducts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>251, 160</value>
   </data>
   <data name="tlStrCopyMsiProductCode.Size" type="System.Drawing.Size, System.Drawing">
     <value>250, 22</value>
@@ -230,17 +242,26 @@
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
     <value>247, 6</value>
   </data>
-  <data name="ctxMnuProducts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 160</value>
+  <data name="btnDeleteExceptionFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>812, 70</value>
+  </data>
+  <data name="btnDeletePatternFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>812, 31</value>
+  </data>
+  <data name="btnRefreshFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>842, 29</value>
   </data>
   <data name="btnRemoveComputers.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 379</value>
+    <value>152, 359</value>
   </data>
   <data name="btnRemoveComputers.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 46</value>
   </data>
   <data name="btnRemoveComputers.Text" xml:space="preserve">
     <value>Удалить выбранные компьютеры</value>
+  </data>
+  <data name="btnAddRemoteComputer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 359</value>
   </data>
   <data name="btnAddRemoteComputer.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 46</value>
@@ -249,7 +270,7 @@
     <value>Добавить удаленный компьютер…</value>
   </data>
   <data name="btnQueryComputer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>314, 379</value>
+    <value>303, 359</value>
   </data>
   <data name="btnQueryComputer.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 46</value>
@@ -258,7 +279,7 @@
     <value>Опросить выбранный компьютер</value>
   </data>
   <data name="btnInstallProduct.Location" type="System.Drawing.Point, System.Drawing">
-    <value>686, 379</value>
+    <value>644, 359</value>
   </data>
   <data name="btnInstallProduct.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 46</value>
@@ -267,7 +288,7 @@
     <value>Установить продукт MSI…</value>
   </data>
   <data name="btnUninstall.Location" type="System.Drawing.Point, System.Drawing">
-    <value>535, 379</value>
+    <value>493, 359</value>
   </data>
   <data name="btnUninstall.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 46</value>
@@ -275,8 +296,14 @@
   <data name="btnUninstall.Text" xml:space="preserve">
     <value>Удалить выбранные продукты</value>
   </data>
+  <data name="btnQuit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>826, 359</value>
+  </data>
   <data name="btnQuit.Text" xml:space="preserve">
     <value>Выход</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>904, 412</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1945,6 +1972,6 @@
 </value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>940, 330</value>
+    <value>920, 451</value>
   </data>
 </root>

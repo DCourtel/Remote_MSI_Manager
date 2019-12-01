@@ -22,9 +22,9 @@ namespace RemoteMsiManager
         /// <param name="computerName">Name of the computer</param>
         public Computer(string computerName)
         {
-            this.Destroying = false;
-            this._computerName = computerName;
-            this._computerLocation = ComputerLocations.Local;
+            Destroying = false;
+            _computerName = computerName;
+            _computerLocation = ComputerLocations.Local;
         }
 
         /// <summary>
@@ -35,11 +35,11 @@ namespace RemoteMsiManager
         /// <param name="password">Password for the provided user.</param>
         public Computer(string computerName, string userName, string password)
         {
-            this.Destroying = false;
-            this._computerName = computerName;
-            this._computerLocation = ComputerLocations.Remote;
-            this._username = userName;
-            this._password = password;
+            Destroying = false;
+            _computerName = computerName;
+            _computerLocation = ComputerLocations.Remote;
+            _username = userName;
+            _password = password;
         }
 
         ~Computer()
@@ -48,7 +48,7 @@ namespace RemoteMsiManager
             {
                 if (_retrieveProducsAsynchThread != null)
                 {
-                    this.Destroying = true;
+                    Destroying = true;
                     _retrieveProducsAsynchThread.Abort();
                     _retrieveProducsAsynchThread.Join(500);
                     _retrieveProducsAsynchThread = null;
@@ -65,8 +65,8 @@ namespace RemoteMsiManager
         /// </summary>
         public ComputerLocations ComputerLocation
         {
-            get { return this._computerLocation; }
-            private set { this._computerLocation = value; }
+            get { return _computerLocation; }
+            private set { _computerLocation = value; }
         }
 
         private string _computerName = String.Empty;
@@ -75,7 +75,7 @@ namespace RemoteMsiManager
         /// </summary>
         public string ComputerName
         {
-            get { return this._computerName; }
+            get { return _computerName; }
         }
 
         /// <summary>
@@ -89,8 +89,8 @@ namespace RemoteMsiManager
         /// </summary>
         public string Password
         {
-            private get { return this._password; }
-            set { this._password = value; }
+            private get { return _password; }
+            set { _password = value; }
         }
 
         /// <summary>
@@ -113,11 +113,11 @@ namespace RemoteMsiManager
         /// </summary>
         public string RemoteUsername
         {
-            get { return this._remoteUsername; }
+            get { return _remoteUsername; }
             private set
             {
                 if (!String.IsNullOrEmpty(value))
-                { this._remoteUsername = value; }
+                { _remoteUsername = value; }
             }
         }
 
@@ -127,8 +127,8 @@ namespace RemoteMsiManager
         /// </summary>
         public string Username
         {
-            get { return this._username; }
-            set { this._username = value; }
+            get { return _username; }
+            set { _username = value; }
         }
 
         private Exception _lastErrorThrown = null;
@@ -137,8 +137,8 @@ namespace RemoteMsiManager
         /// </summary>
         public Exception LastErrorThrown
         {
-            get { return this._lastErrorThrown; }
-            private set { this._lastErrorThrown = value; }
+            get { return _lastErrorThrown; }
+            private set { _lastErrorThrown = value; }
         }
 
         #endregion (Properties)
@@ -146,16 +146,16 @@ namespace RemoteMsiManager
         #region (Methods)
 
         /// <summary>
-        /// Check if credential for this computer are valid by trying to connect to C:\Windows.
+        /// Checks if credential for this computer are valid by trying to connect to C:\Windows.
         /// </summary>
         /// <returns>True if the connection succeed, otherwise, false.</returns>
         internal bool IsCredentialOk()
         {
-            string rootFolder = @"\\" + this.ComputerName + @"\C$\Windows";
+            string rootFolder = @"\\" + ComputerName + @"\C$\Windows";
 
             try
             {
-                return NetUse.Mount(string.Empty, rootFolder, this.Username, this.Password);
+                return NetUse.Mount(string.Empty, rootFolder, Username, Password);
             }
             catch (Exception) { }
 
@@ -184,7 +184,7 @@ namespace RemoteMsiManager
             foreach (DirectoryInfo subfolder in sourceFolderInfo.GetDirectories())
             {
                 Directory.CreateDirectory(Path.Combine(destinationFolder, subfolder.Name));
-                this.CopyFolders(subfolder.FullName, Path.Combine(destinationFolder, subfolder.Name));
+                CopyFolders(subfolder.FullName, Path.Combine(destinationFolder, subfolder.Name));
             }
         }
 
@@ -194,7 +194,7 @@ namespace RemoteMsiManager
             {
                 string fullPath = Path.Combine(rootFolder, subfolder);
 
-                if (NetUse.Mount(string.Empty, rootFolder, this.Username, this.Password))
+                if (NetUse.Mount(string.Empty, rootFolder, Username, Password))
                 {
                     if (!Directory.Exists(fullPath))
                     {
@@ -204,11 +204,11 @@ namespace RemoteMsiManager
                     FileInfo mainFileInfo = new FileInfo(mainFile);
                     File.Copy(mainFile, Path.Combine(fullPath, mainFileInfo.Name), true);
                     // Copy of the additional files
-                    this.CopyFiles(additionalFiles, fullPath);
+                    CopyFiles(additionalFiles, fullPath);
                     // Copy of the additional folders
                     foreach (string folder in additionalFolders)
                     {
-                        this.CopyFolders(folder, fullPath);
+                        CopyFolders(folder, fullPath);
                     }
                 }
             }
@@ -219,17 +219,17 @@ namespace RemoteMsiManager
         }
 
         /// <summary>
-        /// Update the RemoteUsername property with the login of the current user.
+        /// Updates the RemoteUsername property with the login of the current user.
         /// </summary>
         /// <exception cref="UnauthorizedAccessException">Thrown when credentials are not valid.</exception>
         /// <exception cref="Exception">Thrown in every other case.</exception>
         internal void GetCurrentLogonUsername()
         {
-            if (this.ComputerLocation == ComputerLocations.Local)
-            { this.RemoteUsername = Environment.UserName; }
+            if (ComputerLocation == ComputerLocations.Local)
+            { RemoteUsername = Environment.UserName; }
             else
             {
-                ManagementObjectCollection results = this.GetWmiQueryResult("SELECT * FROM Win32_ComputerSystem");
+                ManagementObjectCollection results = GetWmiQueryResult("SELECT * FROM Win32_ComputerSystem");
 
                 foreach (ManagementObject result in results)
                 {
@@ -239,13 +239,13 @@ namespace RemoteMsiManager
                         username = result["UserName"].ToString();
                     }
                     catch (Exception) { }
-                    this.RemoteUsername = String.IsNullOrEmpty(username) ? "#Nobody#" : username;
+                    RemoteUsername = String.IsNullOrEmpty(username) ? "#Nobody#" : username;
                 }
             }
         }
 
         /// <summary>
-        /// Remove leading and trailing curly braces from an IdentifyingNumber
+        /// Removes leading and trailing curly braces from an IdentifyingNumber
         /// </summary>
         /// <param name="identifyingNumber">An IdentifyingNumber as it is provided by the «IdentifyingNumber» property of the Win32_Product WMI Class</param>
         /// <returns>A GUID without leading and trailing curly braces</returns>
@@ -261,25 +261,25 @@ namespace RemoteMsiManager
         /// <exception cref="Exception">Thrown in every other case.</exception>
         private void GetInstalledProducts()
         {
-            if (!this.Destroying)
+            if (!Destroying)
             {
-                this.ProductsRetrievalInProgress = true;
-                this._products.Clear();
+                ProductsRetrievalInProgress = true;
+                _products.Clear();
 
                 try
                 {
-                    this.LastErrorThrown = null;
-                    ManagementObjectCollection results = this.GetWmiQueryResult("Select * from Win32_Product");
+                    LastErrorThrown = null;
+                    ManagementObjectCollection results = GetWmiQueryResult("Select * from Win32_Product");
 
                     foreach (ManagementObject result in results)
                     {
-                        if (this.Destroying)
+                        if (Destroying)
                             break;
                         try
                         {
                             MsiProduct product = new MsiProduct(GetFormattedIdentifyingNumber(result["identifyingNumber"].ToString()), result["Name"].ToString(), result["Version"].ToString());
 
-                            this._products.Add(product);
+                            _products.Add(product);
 
                             product.Caption = GetProperty("Caption", result);
                             product.Description = GetProperty("Description", result);
@@ -343,12 +343,12 @@ namespace RemoteMsiManager
                 }
                 catch (Exception ex)
                 {
-                    this.LastErrorThrown = ex;
+                    LastErrorThrown = ex;
                 }
             }
 
-            this.ProductsRetrievalInProgress = false;
-            if (ProductsRetrieved != null && !this.Destroying)
+            ProductsRetrievalInProgress = false;
+            if (ProductsRetrieved != null && !Destroying)
                 ProductsRetrieved(this);
         }
 
@@ -371,13 +371,13 @@ namespace RemoteMsiManager
         private ManagementObjectCollection GetWmiQueryResult(string query)
         {
             ConnectionOptions connectionOptions = new ConnectionOptions();
-            if (this.ComputerLocation == ComputerLocations.Remote && !String.IsNullOrEmpty(this.Username))
+            if (ComputerLocation == ComputerLocations.Remote && !String.IsNullOrEmpty(Username))
             {
-                connectionOptions.Username = this.Username;
-                connectionOptions.Password = this.Password;
+                connectionOptions.Username = Username;
+                connectionOptions.Password = Password;
             }
 
-            ManagementPath path = new ManagementPath(@"\\" + this.ComputerName + @"\root\cimv2");
+            ManagementPath path = new ManagementPath(@"\\" + ComputerName + @"\root\cimv2");
             ManagementScope scope = new ManagementScope(path, connectionOptions);
 
             ManagementObjectSearcher searcher = new ManagementObjectSearcher(scope, new SelectQuery(query));
@@ -385,24 +385,24 @@ namespace RemoteMsiManager
         }
 
         /// <summary>
-        /// Intall a MSI Product on the local or remote computer. Use the «Install» method of the Win32_Product Wmi class.
+        /// Intalls a MSI Product on the local or remote computer. Use the «Install» method of the Win32_Product Wmi class.
         /// </summary>
         /// <param name="packageLocation">Full path to the MSI File</param>
         /// <param name="options">Options to provide to MsiExec</param>
         /// <returns>Returns the exit code of MsiExec</returns>
         /// <exception cref="Exception"></exception>
-        internal UInt32 InstallProduct(string packageLocation, string options)
+        internal uint InstallProduct(string packageLocation, string options)
         {
-            UInt32 result = int.MaxValue;
+            uint result = int.MaxValue;
 
             ConnectionOptions connectionOptions = new ConnectionOptions();
-            if (this.ComputerLocation == ComputerLocations.Remote && !String.IsNullOrEmpty(this.Username))
+            if (ComputerLocation == ComputerLocations.Remote && !String.IsNullOrEmpty(Username))
             {
-                connectionOptions.Username = this.Username;
-                connectionOptions.Password = this.Password;
+                connectionOptions.Username = Username;
+                connectionOptions.Password = Password;
             }
 
-            ManagementPath path = new ManagementPath(@"\\" + this.ComputerName + @"\root\cimv2");
+            ManagementPath path = new ManagementPath(@"\\" + ComputerName + @"\root\cimv2");
             ManagementScope scope = new ManagementScope(path, connectionOptions);
 
             ManagementClass classInstance = new ManagementClass(scope, new ManagementPath("Win32_Product"), null);
@@ -413,18 +413,18 @@ namespace RemoteMsiManager
             inParams["PackageLocation"] = packageLocation;
             ManagementBaseObject outParams = classInstance.InvokeMethod("Install", inParams, null);
             string exitCode = outParams["ReturnValue"].ToString();
-            result = UInt32.Parse(exitCode);
+            result = uint.Parse(exitCode);
 
             return result;
         }
 
         private void RemoveProduct(string productCode)
         {
-            foreach (MsiProduct currentProduct in this.Products)
+            foreach (MsiProduct currentProduct in Products)
             {
                 if (String.Compare(currentProduct.IdentifyingNumber, productCode, true) == 0)
                 {
-                    this.Products.Remove(currentProduct);
+                    Products.Remove(currentProduct);
                     break;
                 }
             }
@@ -435,29 +435,29 @@ namespace RemoteMsiManager
         /// </summary>
         internal void RetrieveProductsAsynch()
         {
-            _retrieveProducsAsynchThread = new System.Threading.Thread(new System.Threading.ThreadStart(this.GetInstalledProducts));
+            _retrieveProducsAsynchThread = new System.Threading.Thread(new System.Threading.ThreadStart(GetInstalledProducts));
             _retrieveProducsAsynchThread.IsBackground = true;
             _retrieveProducsAsynchThread.Start();
         }
 
         /// <summary>
-        /// Uninstall the MSI Product from this computer. Use the «Uninstall» method of the Win32_Product Wmi class.
+        /// Uninstalls the MSI Product from this computer. Use the «Uninstall» method of the Win32_Product Wmi class.
         /// </summary>
         /// <param name="productCode">The MSI Product code of the MSI Product.</param>
         /// <returns>The MSI result code of the operation</returns>
         /// <exception cref="UnauthorizedAccessException">Thrown when credentials are not valid.</exception>
         /// <exception cref="Exception">Thrown in every other case.</exception>
-        internal UInt32 UninstallProduct(string productCode)
+        internal uint UninstallProduct(string productCode)
         {
-            UInt32 result = int.MaxValue;
+            uint result = int.MaxValue;
 
-            ManagementObjectCollection softwares = this.GetWmiQueryResult("Select * from Win32_Product where identifyingNumber like '{" + productCode + "}'");
+            ManagementObjectCollection softwares = GetWmiQueryResult("Select * from Win32_Product where identifyingNumber like '{" + productCode + "}'");
 
             foreach (ManagementObject software in softwares)
             {
-                result = (UInt32)software.InvokeMethod("Uninstall", null);
+                result = (uint)software.InvokeMethod("Uninstall", null);
                 if (MsiProduct.IsSuccess(result))
-                { this.RemoveProduct(productCode); }
+                { RemoveProduct(productCode); }
             }
 
             return result;
@@ -478,14 +478,14 @@ namespace RemoteMsiManager
 
             internal CopyFailedException(string errorMessage)
             {
-                this.ErrorMessage = errorMessage;
+                ErrorMessage = errorMessage;
             }
 
             private string ErrorMessage { get; set; }
 
             public override string Message
             {
-                get { return this._localization.GetLocalizedString("CopyFailed") + this.ErrorMessage; }
+                get { return _localization.GetLocalizedString("CopyFailed") + ErrorMessage; }
             }
         }
     }

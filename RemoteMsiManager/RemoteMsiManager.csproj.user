@@ -11,6 +11,6 @@
     <StartArguments>-I=26A24AE4-039D-4CA4-87B4-2F%25 -E=26A24AE4-039D-4CA4-87B4-2F86418065F0</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <StartArguments>-C=wsus2008R2 -U=AdminSRV -P=%40dmLocal128</StartArguments>
+    <StartArguments>-C=patchmypc-2016 -U=AdminSRV -P=%40dmLocal128</StartArguments>
   </PropertyGroup>
 </Project>

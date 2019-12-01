@@ -53,6 +53,7 @@
             this.btnAddAdditionnalFiles = new System.Windows.Forms.Button();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.btnInstall = new System.Windows.Forms.Button();
+            this.ChkBxNeverRestart = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -93,8 +94,8 @@
             // 
             resources.ApplyResources(this.txtBxLocalPackage, "txtBxLocalPackage");
             this.txtBxLocalPackage.Name = "txtBxLocalPackage";
-            this.txtBxLocalPackage.TextChanged += new System.EventHandler(this.txtBxLocation_TextChanged);
-            this.txtBxLocalPackage.Leave += new System.EventHandler(this.txtBxLocation_Leave);
+            this.txtBxLocalPackage.TextChanged += new System.EventHandler(this.TxtBxLocation_TextChanged);
+            this.txtBxLocalPackage.Leave += new System.EventHandler(this.TxtBxLocation_Leave);
             // 
             // label2
             // 
@@ -131,14 +132,14 @@
             resources.ApplyResources(this.chkLstFiles, "chkLstFiles");
             this.chkLstFiles.FormattingEnabled = true;
             this.chkLstFiles.Name = "chkLstFiles";
-            this.chkLstFiles.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chkLstFiles_ItemCheck);
+            this.chkLstFiles.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.ChkLstFiles_ItemCheck);
             // 
             // chklstFolders
             // 
             resources.ApplyResources(this.chklstFolders, "chklstFolders");
             this.chklstFolders.FormattingEnabled = true;
             this.chklstFolders.Name = "chklstFolders";
-            this.chklstFolders.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chklstFolders_ItemCheck);
+            this.chklstFolders.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.ChklstFolders_ItemCheck);
             // 
             // txtBxStatus
             // 
@@ -159,7 +160,7 @@
             this.btnClose.Image = global::RemoteMsiManager.Properties.Resources.Exit24x24;
             this.btnClose.Name = "btnClose";
             this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // btnRemoveFolders
             // 
@@ -167,7 +168,7 @@
             this.btnRemoveFolders.Image = global::RemoteMsiManager.Properties.Resources.DeleteFolder32x32;
             this.btnRemoveFolders.Name = "btnRemoveFolders";
             this.btnRemoveFolders.UseVisualStyleBackColor = true;
-            this.btnRemoveFolders.Click += new System.EventHandler(this.btnRemoveFolders_Click);
+            this.btnRemoveFolders.Click += new System.EventHandler(this.BtnRemoveFolders_Click);
             // 
             // btnAddFolders
             // 
@@ -175,7 +176,7 @@
             this.btnAddFolders.Image = global::RemoteMsiManager.Properties.Resources.AddFolder32x32;
             this.btnAddFolders.Name = "btnAddFolders";
             this.btnAddFolders.UseVisualStyleBackColor = true;
-            this.btnAddFolders.Click += new System.EventHandler(this.btnAddFolders_Click);
+            this.btnAddFolders.Click += new System.EventHandler(this.BtnAddFolders_Click);
             // 
             // btnRemoveFiles
             // 
@@ -183,7 +184,7 @@
             this.btnRemoveFiles.Image = global::RemoteMsiManager.Properties.Resources.DeleteFile32x32;
             this.btnRemoveFiles.Name = "btnRemoveFiles";
             this.btnRemoveFiles.UseVisualStyleBackColor = true;
-            this.btnRemoveFiles.Click += new System.EventHandler(this.btnRemoveFiles_Click);
+            this.btnRemoveFiles.Click += new System.EventHandler(this.BtnRemoveFiles_Click);
             // 
             // btnAddAdditionnalFiles
             // 
@@ -191,15 +192,14 @@
             this.btnAddAdditionnalFiles.Image = global::RemoteMsiManager.Properties.Resources.AddFile32x32;
             this.btnAddAdditionnalFiles.Name = "btnAddAdditionnalFiles";
             this.btnAddAdditionnalFiles.UseVisualStyleBackColor = true;
-            this.btnAddAdditionnalFiles.Click += new System.EventHandler(this.btnAddAdditionnalFiles_Click);
+            this.btnAddAdditionnalFiles.Click += new System.EventHandler(this.BtnAddAdditionnalFiles_Click);
             // 
             // btnBrowse
             // 
             resources.ApplyResources(this.btnBrowse, "btnBrowse");
             this.btnBrowse.Image = global::RemoteMsiManager.Properties.Resources.Browse32x32;
             this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.UseVisualStyleBackColor = true;
-            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            this.btnBrowse.Click += new System.EventHandler(this.BtnBrowse_Click);
             // 
             // btnInstall
             // 
@@ -207,13 +207,22 @@
             this.btnInstall.Image = global::RemoteMsiManager.Properties.Resources.Install32x32;
             this.btnInstall.Name = "btnInstall";
             this.btnInstall.UseVisualStyleBackColor = true;
-            this.btnInstall.Click += new System.EventHandler(this.btnInstall_Click);
+            this.btnInstall.Click += new System.EventHandler(this.BtnInstall_Click);
+            // 
+            // ChkBxNeverRestart
+            // 
+            resources.ApplyResources(this.ChkBxNeverRestart, "ChkBxNeverRestart");
+            this.ChkBxNeverRestart.Checked = true;
+            this.ChkBxNeverRestart.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ChkBxNeverRestart.Name = "ChkBxNeverRestart";
+            this.ChkBxNeverRestart.UseVisualStyleBackColor = true;
             // 
             // FrmInstallProduct
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
+            this.Controls.Add(this.ChkBxNeverRestart);
             this.Controls.Add(this.chklstFolders);
             this.Controls.Add(this.chkLstFiles);
             this.Controls.Add(this.label8);
@@ -238,8 +247,10 @@
             this.Controls.Add(this.txtBxOptions);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnInstall);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmInstallProduct";
+            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -272,5 +283,6 @@
         private System.Windows.Forms.Button btnRemoveFolders;
         private System.Windows.Forms.TextBox txtBxStatus;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.CheckBox ChkBxNeverRestart;
     }
 }

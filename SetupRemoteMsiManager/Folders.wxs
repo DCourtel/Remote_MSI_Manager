@@ -10,6 +10,8 @@
           <Directory Id="pt" Name="pt"/>
           <Directory Id="de" Name="de"/>
           <Directory Id="Documentation" Name="Documentation"/>
+          <!--<Directory Id="x64" Name="x64"/>-->
+          <Directory Id="x86" Name="x86"/>
         </Directory>
       </Directory>
       <Directory Id="ProgramMenuFolder">

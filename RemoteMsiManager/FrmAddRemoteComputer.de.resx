@@ -181,9 +181,6 @@
   <data name="label5.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Remote Computer hinzufügen</value>
-  </data>
   <data name="$this.ToolTip" xml:space="preserve">
     <value />
   </data>

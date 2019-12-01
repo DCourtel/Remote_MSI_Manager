@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
+using Microsoft.AppCenter.Crashes;
 
 namespace RemoteMsiManager
 {
     public partial class FrmAddRemoteComputer : Form
     {
-        private Timer _chrono = new Timer();
-        private Localization _localization = Localization.GetInstance();
+        private readonly Timer _chrono = new Timer();
+        private readonly Localization _localization = Localization.GetInstance();
 
         public FrmAddRemoteComputer()
         {
@@ -14,23 +15,23 @@ namespace RemoteMsiManager
 
             try
             {
-                this.txtBxUsername.Text = Properties.Settings.Default.AdminUser;
-                this._chrono.Interval = 2000;
-                this._chrono.Tick += _chrono_Tick;
+                txtBxUsername.Text = Properties.Settings.Default.AdminUser;
+                _chrono.Interval = 2000;
+                _chrono.Tick += Chrono_Tick;
             }
-            catch (Exception) { }
+            catch (Exception ex) { Crashes.TrackError(ex); }
         }
 
         public FrmAddRemoteComputer(string computerName, string username)
             : this()
         {
-            this.txtBxComputerName.Enabled = false;
-            this.ComputerName = computerName;
-            this.Username = username;
-            if (!String.IsNullOrEmpty(this.txtBxUsername.Text))
-            { this.txtBxPassword.Select(); }
+            txtBxComputerName.Enabled = false;
+            ComputerName = computerName;
+            Username = username;
+            if (!String.IsNullOrEmpty(txtBxUsername.Text))
+            { txtBxPassword.Select(); }
             else
-            { this.txtBxUsername.Select(); }
+            { txtBxUsername.Select(); }
         }
 
         #region (internal properties)
@@ -40,8 +41,8 @@ namespace RemoteMsiManager
         /// </summary>
         internal string ComputerName
         {
-            get { return this.txtBxComputerName.Text; }
-            set { this.txtBxComputerName.Text = value; }
+            get { return txtBxComputerName.Text; }
+            set { txtBxComputerName.Text = value; }
         }
 
         /// <summary>
@@ -49,8 +50,8 @@ namespace RemoteMsiManager
         /// </summary>
         internal string Username
         {
-            get { return this.txtBxUsername.Text; }
-            set { this.txtBxUsername.Text = value; }
+            get { return txtBxUsername.Text; }
+            set { txtBxUsername.Text = value; }
         }
 
         /// <summary>
@@ -58,8 +59,8 @@ namespace RemoteMsiManager
         /// </summary>
         internal string Password
         {
-            get { return this.txtBxPassword.Text; }
-            set { this.txtBxPassword.Text = value; }
+            get { return txtBxPassword.Text; }
+            set { txtBxPassword.Text = value; }
         }
 
         #endregion (internal properties)
@@ -68,45 +69,48 @@ namespace RemoteMsiManager
 
         private void ValidateData()
         {
-            this.btnOk.Enabled = !String.IsNullOrEmpty(this.txtBxComputerName.Text); // && !String.IsNullOrEmpty(this.txtBxUsername.Text) && !String.IsNullOrEmpty(this.txtBxPassword.Text);
+            btnOk.Enabled = !String.IsNullOrEmpty(txtBxComputerName.Text); // && !String.IsNullOrEmpty(txtBxUsername.Text) && !String.IsNullOrEmpty(txtBxPassword.Text);
         }
 
         private void PingRemoteComputer()
         {
             try
             {
-                this.btnPing.Image = Properties.Resources.Orange16x16;
-                this.toolTip1.SetToolTip(this.btnPing, this._localization.GetLocalizedString("Testing"));
-                if (!String.IsNullOrEmpty(this.txtBxComputerName.Text))
+                btnPing.Image = Properties.Resources.Orange16x16;
+                toolTip1.SetToolTip(btnPing, _localization.GetLocalizedString("Testing"));
+                if (!String.IsNullOrEmpty(txtBxComputerName.Text))
                 {
-                    System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
-                    ping.PingCompleted += ping_PingCompleted;
-                    ping.SendAsync(this.txtBxComputerName.Text, null);
+                    using (var ping = new System.Net.NetworkInformation.Ping())
+                    {
+                        ping.PingCompleted += Ping_PingCompleted;
+                        ping.SendAsync(txtBxComputerName.Text, null);
+                    }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                this.btnPing.Image = Properties.Resources.Red16x16;
-                this.toolTip1.SetToolTip(this.btnPing, this._localization.GetLocalizedString("CantPing"));
+                Crashes.TrackError(ex);
+                btnPing.Image = Properties.Resources.Red16x16;
+                toolTip1.SetToolTip(btnPing, _localization.GetLocalizedString("CantPing"));
             }
         }
 
-        private void ping_PingCompleted(object sender, System.Net.NetworkInformation.PingCompletedEventArgs e)
+        private void Ping_PingCompleted(object sender, System.Net.NetworkInformation.PingCompletedEventArgs e)
         {
             try
             {
                 if (e.Reply != null && e.Reply.Status == System.Net.NetworkInformation.IPStatus.Success)
                 {
-                    this.btnPing.Image = Properties.Resources.Green16x16;
-                    this.toolTip1.SetToolTip(this.btnPing, this._localization.GetLocalizedString("PingOK"));
+                    btnPing.Image = Properties.Resources.Green16x16;
+                    toolTip1.SetToolTip(btnPing, _localization.GetLocalizedString("PingOK"));
                 }
                 else
                 {
-                    this.btnPing.Image = Properties.Resources.Red16x16;
-                    this.toolTip1.SetToolTip(this.btnPing, this._localization.GetLocalizedString("CantPing"));
+                    btnPing.Image = Properties.Resources.Red16x16;
+                    toolTip1.SetToolTip(btnPing, _localization.GetLocalizedString("CantPing"));
                 }
             }
-            catch (Exception) { }
+            catch (Exception ex) { Crashes.TrackError(ex); }
         }
 
         #endregion (private methods)
@@ -115,95 +119,95 @@ namespace RemoteMsiManager
 
         // Buttons
 
-        private void btnTestCredential_Click(object sender, EventArgs e)
+        private void BtnTestCredential_Click(object sender, EventArgs e)
         {
-            Computer tempComputer = new Computer(this.ComputerName, this.Username, this.Password);
-            this.btnOk.Enabled = false;
-            this.btnCancel.Enabled = false;
-            this.btnTestCredential.Enabled = false;
-            this.Refresh();
+            Computer tempComputer = new Computer(ComputerName, Username, Password);
+            btnOk.Enabled = false;
+            btnCancel.Enabled = false;
+            btnTestCredential.Enabled = false;
+            Refresh();
 
             if (tempComputer.IsCredentialOk())
             {
-                this.btnTestCredential.BackColor = System.Drawing.Color.LightGreen;            
+                btnTestCredential.BackColor = System.Drawing.Color.LightGreen;            
             }
             else
             {
-                this.btnTestCredential.BackColor = System.Drawing.Color.OrangeRed;
+                btnTestCredential.BackColor = System.Drawing.Color.OrangeRed;
             }
-            this.btnOk.Enabled = true;
-            this.btnCancel.Enabled = true;
-            this.btnTestCredential.Enabled = true;
+            btnOk.Enabled = true;
+            btnCancel.Enabled = true;
+            btnTestCredential.Enabled = true;
         }
 
-        private void btnOk_Click(object sender, EventArgs e)
+        private void BtnOk_Click(object sender, EventArgs e)
         {
                 try
                 {
-                    Properties.Settings.Default.AdminUser = this.txtBxUsername.Text;
+                    Properties.Settings.Default.AdminUser = txtBxUsername.Text;
                     Properties.Settings.Default.Save();
                 }
-                catch (Exception) { }
+                catch (Exception ex) { Crashes.TrackError(ex); }
 
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                DialogResult = DialogResult.OK;
         }
 
-        private void btnShowPassword_MouseDown(object sender, MouseEventArgs e)
+        private void BtnShowPassword_MouseDown(object sender, MouseEventArgs e)
         {
-            this.txtBxPassword.UseSystemPasswordChar = false;
+            txtBxPassword.UseSystemPasswordChar = false;
         }
 
-        private void btnShowPassword_MouseUp(object sender, MouseEventArgs e)
+        private void BtnShowPassword_MouseUp(object sender, MouseEventArgs e)
         {
-            this.txtBxPassword.UseSystemPasswordChar = true;
+            txtBxPassword.UseSystemPasswordChar = true;
         }
 
-        private void btnPing_Click(object sender, EventArgs e)
+        private void BtnPing_Click(object sender, EventArgs e)
         {
-            this.PingRemoteComputer();
+            PingRemoteComputer();
         }
 
         // Textboxes
 
-        private void txtBxes_TextChanged(object sender, EventArgs e)
+        private void TxtBxes_TextChanged(object sender, EventArgs e)
         {
-            this.btnTestCredential.BackColor = System.Drawing.SystemColors.Control;
+            btnTestCredential.BackColor = System.Drawing.SystemColors.Control;
 
-            if (String.IsNullOrEmpty(this.txtBxComputerName.Text))
+            if (String.IsNullOrEmpty(txtBxComputerName.Text))
             {
-                this.btnPing.Image = Properties.Resources.Red16x16;
-                this.toolTip1.SetToolTip(this.btnPing, this._localization.GetLocalizedString("CantPing"));
+                btnPing.Image = Properties.Resources.Red16x16;
+                toolTip1.SetToolTip(btnPing, _localization.GetLocalizedString("CantPing"));
             }
             else
             {
-                if (!this._chrono.Enabled)
-                    this._chrono.Start();
+                if (!_chrono.Enabled)
+                    _chrono.Start();
                 else
                 {
-                    this._chrono.Stop();
-                    this._chrono.Start();
+                    _chrono.Stop();
+                    _chrono.Start();
                 }
             }
 
-            this.ValidateData();
+            ValidateData();
         }
 
-        private void txtBxComputerName_Leave(object sender, EventArgs e)
+        private void TxtBxComputerName_Leave(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(this.txtBxComputerName.Text))
+            if (!String.IsNullOrEmpty(txtBxComputerName.Text))
             {
-                this.PingRemoteComputer();
+                PingRemoteComputer();
             }
         }
 
         // Timer
 
-        private void _chrono_Tick(object sender, EventArgs e)
+        private void Chrono_Tick(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(this.txtBxComputerName.Text))
+            if (!String.IsNullOrEmpty(txtBxComputerName.Text))
             {
-                this._chrono.Stop();
-                this.PingRemoteComputer();
+                _chrono.Stop();
+                PingRemoteComputer();
             }
         }
 

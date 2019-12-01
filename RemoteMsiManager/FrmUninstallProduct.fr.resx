@@ -155,7 +155,4 @@
   <data name="label2.Text" xml:space="preserve">
     <value>Êtes-vous sûre de vouloir désinstaller tous ces produits MSI : </value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Désinstaller un Produit MSI</value>
-  </data>
 </root>
