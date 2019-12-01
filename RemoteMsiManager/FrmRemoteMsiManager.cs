@@ -372,7 +372,6 @@ namespace RemoteMsiManager
 
         private void btnAddRemoteComputer_Click(object sender, EventArgs e)
         {
-            throw new ArgumentException("This is a test with ArgumentException!");
             FrmAddRemoteComputer addRemoteComputer = new FrmAddRemoteComputer
             {
                 Password = _password

@@ -16,7 +16,7 @@ namespace RemoteMsiManager
         {
             AppCenter.Start("3c20a610-e601-45df-82c3-10af97243bfe", typeof(Analytics), typeof(Crashes));            
 #if(DEBUG)
-            //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("es");
+            //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
 #endif
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
