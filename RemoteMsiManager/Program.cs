@@ -14,8 +14,10 @@ namespace RemoteMsiManager
         [STAThread]
         static void Main(string[] args)
         {
-            AppCenter.Start("3c20a610-e601-45df-82c3-10af97243bfe", typeof(Analytics), typeof(Crashes));            
-#if(DEBUG)
+            var countryCode = System.Globalization.RegionInfo.CurrentRegion.TwoLetterISORegionName;
+            AppCenter.SetCountryCode(countryCode);
+            AppCenter.Start(AppCenterAPI.ApiKey, typeof(Analytics), typeof(Crashes));
+#if (DEBUG)
             //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
 #endif
             Application.EnableVisualStyles();

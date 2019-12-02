@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Analytics;
 
 namespace RemoteMsiManager
 {
@@ -124,6 +125,15 @@ namespace RemoteMsiManager
             chklstFolders.Enabled = isEnabled;
         }
 
+        private void ReportInstallationResult(string filename, uint result)
+        {
+            try
+            {
+                Analytics.TrackEvent("Installation", new Dictionary<string, string>() { { "InstallationResult", $"{filename}:{result.ToString()}" } });
+            }
+            catch (Exception) { }
+        }
+
         #endregion (Methods)
 
         #region (Events)
@@ -149,16 +159,18 @@ namespace RemoteMsiManager
                     }
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Crashes.TrackError(ex);
-                MessageBox.Show(ex.Message); }
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnAddAdditionnalFiles_Click(object sender, EventArgs e)
         {
             try
             {
-                using(var fileBrowser = new OpenFileDialog())
+                using (var fileBrowser = new OpenFileDialog())
                 {
                     fileBrowser.InitialDirectory = txtBxLocalPackage.Text;
                     fileBrowser.Filter = "All Files|*.*|MST Files|*.MST";
@@ -175,18 +187,20 @@ namespace RemoteMsiManager
                                 MessageBox.Show(_localization.GetLocalizedString("filealreadyincludes") + "\r\n" + file);
                         }
                     }
-                }                
+                }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Crashes.TrackError(ex);
-                MessageBox.Show(ex.Message); }
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnAddFolders_Click(object sender, EventArgs e)
         {
             try
             {
-                using(var folderBrowser = new FolderBrowserDialog())
+                using (var folderBrowser = new FolderBrowserDialog())
                 {
                     folderBrowser.SelectedPath = txtBxLocalPackage.Text;
                     if (folderBrowser.ShowDialog() == DialogResult.OK)
@@ -196,11 +210,13 @@ namespace RemoteMsiManager
                         else
                             MessageBox.Show(_localization.GetLocalizedString("folderalreadyincludes") + "\r\n" + folderBrowser.SelectedPath);
                     }
-                }                
+                }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Crashes.TrackError(ex);
-                MessageBox.Show(ex.Message); }
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnRemoveFiles_Click(object sender, EventArgs e)
@@ -216,9 +232,11 @@ namespace RemoteMsiManager
                     catch (Exception ex) { Crashes.TrackError(ex); }
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Crashes.TrackError(ex);
-                MessageBox.Show(ex.Message); }
+                MessageBox.Show(ex.Message);
+            }
             ValidateData();
         }
 
@@ -235,9 +253,11 @@ namespace RemoteMsiManager
                     catch (Exception ex) { Crashes.TrackError(ex); }
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Crashes.TrackError(ex);
-                MessageBox.Show(ex.Message); }
+                MessageBox.Show(ex.Message);
+            }
             ValidateData();
         }
 
@@ -272,9 +292,11 @@ namespace RemoteMsiManager
 
                 if (ChkBxNeverRestart.Checked && !options.ToLower().Contains("reboot=reallysuppress"))
                 {
-                    options += (!string.IsNullOrEmpty(options)?" ":string.Empty) + "REBOOT=ReallySuppress";
+                    options += (!string.IsNullOrEmpty(options) ? " " : string.Empty) + "REBOOT=ReallySuppress";
                 }
                 uint result = _targetComputer.InstallProduct(Path.Combine(rootFolder, subFolder, mainFileInfo.Name), options);
+
+                ReportInstallationResult(mainFileInfo.Name, result);
 
                 DisplayResult(result);
             }

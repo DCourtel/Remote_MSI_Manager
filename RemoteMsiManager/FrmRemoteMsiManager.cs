@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Analytics;
 
 namespace RemoteMsiManager
 {
@@ -287,9 +288,11 @@ namespace RemoteMsiManager
                     }
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Crashes.TrackError(ex);
-                MessageBox.Show(ex.Message); }
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void UpdateProductCount(Computer computer, int displayedProductCount)
@@ -320,6 +323,17 @@ namespace RemoteMsiManager
             }
             catch (Exception ex) { Crashes.TrackError(ex); }
         }
+        
+        private void ReportShowDetails()
+        {
+            try
+            {
+                var productName = dgvProducts.SelectedRows[0].Cells["ProductName"].Value.ToString();
+                var productVersion = dgvProducts.SelectedRows[0].Cells["Version"].Value.ToString();
+                Analytics.TrackEvent("Show product details", new Dictionary<string, string>() { { "Product", $"{productName}-{productVersion}" } });
+            }
+            catch (Exception) { }
+        }
 
         #endregion (Methods)
 
@@ -332,7 +346,6 @@ namespace RemoteMsiManager
             try
             {
                 Computer computerToQuery = null;
-
                 if (dgvComputers.SelectedRows != null && dgvComputers.SelectedRows.Count == 1)
                 {
                     computerToQuery = (Computer)dgvComputers.SelectedRows[0].Cells["Computer"].Value;
@@ -350,13 +363,17 @@ namespace RemoteMsiManager
                         computerToQuery.RetrieveProductsAsynch();
                     }
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
                     Crashes.TrackError(ex);
-                    MessageBox.Show(ex.Message); }
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Crashes.TrackError(ex);
-                MessageBox.Show(ex.Message); }
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnUninstall_Click(object sender, EventArgs e)
@@ -381,6 +398,12 @@ namespace RemoteMsiManager
             {
                 AddComputer(new Computer(addRemoteComputer.ComputerName, addRemoteComputer.Username, addRemoteComputer.Password));
                 _password = addRemoteComputer.Password;
+
+                try
+                {                    
+                    Analytics.TrackEvent("Add Remote Computer", new Dictionary<string, string>() { { "ComputerName", $"{addRemoteComputer.ComputerName}" } });
+                }
+                catch (Exception) { }
             }
         }
 
@@ -463,7 +486,7 @@ namespace RemoteMsiManager
                     {
                         selectedComputer.Username = frmAddComputer.Username;
                         selectedComputer.Password = frmAddComputer.Password;
-                    } 
+                    }
                 }
             }
         }
@@ -590,7 +613,10 @@ namespace RemoteMsiManager
             try
             {
                 if (dgvProducts.SelectedRows != null && dgvProducts.SelectedRows.Count == 1)
-                { ShowProductDetails(dgvProducts.SelectedRows[0].Index); }
+                {
+                    ReportShowDetails();
+                    ShowProductDetails(dgvProducts.SelectedRows[0].Index);
+                }
             }
             catch (Exception ex) { Crashes.TrackError(ex); }
         }
@@ -609,7 +635,9 @@ namespace RemoteMsiManager
             try
             {
                 if (dgvProducts.SelectedRows != null && dgvProducts.SelectedRows.Count == 1)
-                { ShowProductDetails(dgvProducts.SelectedRows[0].Index); }
+                {
+                    ReportShowDetails();
+                    ShowProductDetails(dgvProducts.SelectedRows[0].Index); }
             }
             catch (Exception ex) { Crashes.TrackError(ex); }
         }

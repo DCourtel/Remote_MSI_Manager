@@ -54,11 +54,11 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_DetectChanges = False
-		BuildVersion_AssemblyInfoFilename = RemoteMsiManager\Properties\AssemblyInfo.cs
-		BuildVersion_UpdateFileVersion = True
-		BuildVersion_UpdateAssemblyVersion = True
-		BuildVersion_BuildVersioningStyle = None.None.YearDecadeAndMonthStamp.DeltaBaseDate
 		SolutionGuid = {79F6CB40-3F0F-47A7-923A-B76023C8C279}
+		BuildVersion_BuildVersioningStyle = None.None.YearDecadeAndMonthStamp.DeltaBaseDate
+		BuildVersion_UpdateAssemblyVersion = True
+		BuildVersion_UpdateFileVersion = True
+		BuildVersion_AssemblyInfoFilename = RemoteMsiManager\Properties\AssemblyInfo.cs
+		BuildVersion_DetectChanges = False
 	EndGlobalSection
 EndGlobal

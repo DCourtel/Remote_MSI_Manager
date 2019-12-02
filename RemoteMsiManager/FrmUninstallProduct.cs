@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Analytics;
 
 namespace RemoteMsiManager
 {
@@ -43,6 +44,15 @@ namespace RemoteMsiManager
 
         internal List<MsiProduct> UninstalledProducts { get; } = new List<MsiProduct>();
 
+        private void ReportUninstallResult(string productName, uint result)
+        {
+            try
+            {
+                Analytics.TrackEvent("Uninstallation", new Dictionary<string, string>() { { "UninstallationResult", $"{productName}:{result.ToString()}" } });
+            }
+            catch (Exception) { }
+        }
+
         private void UninstallProducts()
         {
             foreach (DataGridViewRow row in dgvProducts.Rows)
@@ -55,6 +65,9 @@ namespace RemoteMsiManager
                         MsiProduct currentProduct = (MsiProduct)row.Cells["Product"].Value;
                         row.Cells["Result"].Value = _localization.GetLocalizedString("InProgress");
                         uint result = TargetComputer.UninstallProduct(currentProduct.IdentifyingNumber);
+
+                        ReportUninstallResult(currentProduct.Name, result);
+
                         ReportUninstallResult(result, row, currentProduct);
                     }
                 }
