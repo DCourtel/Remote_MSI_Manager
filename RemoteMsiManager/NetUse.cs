@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Runtime.InteropServices;
 
-using BOOL = System.Boolean;
 using DWORD = System.UInt32;
 using LPWSTR = System.String;
 using NET_API_STATUS = System.UInt32;
@@ -68,12 +65,14 @@ namespace RemoteMsiManager
             {
                 NetUseDel("", networkPath, 2);
             }
-            
-            USE_INFO_2 useInfo = new USE_INFO_2();
-            useInfo.ui2_local = drive;
-            useInfo.ui2_remote = networkPath;
-            useInfo.ui2_asg_type = 0;    //disk drive
-            useInfo.ui2_usecount = 1;
+
+            USE_INFO_2 useInfo = new USE_INFO_2
+            {
+                ui2_local = drive,
+                ui2_remote = networkPath,
+                ui2_asg_type = 0,    //disk drive
+                ui2_usecount = 1
+            };
             if (!String.IsNullOrEmpty(username))
             {
                 useInfo.ui2_username = username;

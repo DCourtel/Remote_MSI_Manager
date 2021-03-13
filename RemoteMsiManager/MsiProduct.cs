@@ -14,7 +14,7 @@ namespace RemoteMsiManager
     {
         #region (Error codes definition)
 
-        private static Dictionary<uint, string> _errorCodes = new Dictionary<uint, string>
+        private static readonly Dictionary<uint, string> _errorCodes = new Dictionary<uint, string>
         {
             {0,"The action completed successfully."},
             {13, "The data is invalid."},

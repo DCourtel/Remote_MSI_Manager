@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using Microsoft.AppCenter.Crashes;
 
 namespace RemoteMsiManager
 {
@@ -19,7 +18,7 @@ namespace RemoteMsiManager
                 _chrono.Interval = 2000;
                 _chrono.Tick += Chrono_Tick;
             }
-            catch (Exception ex) { Crashes.TrackError(ex); }
+            catch (Exception) {}
         }
 
         public FrmAddRemoteComputer(string computerName, string username)
@@ -89,7 +88,7 @@ namespace RemoteMsiManager
             }
             catch (Exception ex)
             {
-                Crashes.TrackError(ex);
+                
                 btnPing.Image = Properties.Resources.Red16x16;
                 toolTip1.SetToolTip(btnPing, _localization.GetLocalizedString("CantPing"));
             }
@@ -110,7 +109,7 @@ namespace RemoteMsiManager
                     toolTip1.SetToolTip(btnPing, _localization.GetLocalizedString("CantPing"));
                 }
             }
-            catch (Exception ex) { Crashes.TrackError(ex); }
+            catch (Exception) {  }
         }
 
         #endregion (private methods)
@@ -147,7 +146,7 @@ namespace RemoteMsiManager
                     Properties.Settings.Default.AdminUser = txtBxUsername.Text;
                     Properties.Settings.Default.Save();
                 }
-                catch (Exception ex) { Crashes.TrackError(ex); }
+                catch (Exception) { }
 
                 DialogResult = DialogResult.OK;
         }

@@ -29,44 +29,6 @@
         <File Source="C:\Users\AdminSRV\source\repos\Remote_MSI_Manager\RemoteMsiManager\bin\Release\de\RemoteMsiManager.resources.dll" Id="deDLL" Vital="yes" KeyPath="yes"/>
       </Component>
       
-      <!--  Microsoft AppCenter Analytics -->
-      <Component Guid="*" Id="c_analyticsDLL" Directory="INSTALLFOLDER">
-        <File Source="C:\Users\AdminSRV\source\repos\Remote_MSI_Manager\RemoteMsiManager\bin\Release\Microsoft.AppCenter.Analytics.dll" Id="analyticsDLL" Vital="yes" KeyPath="yes"/>
-      </Component>
-      <Component Guid="*" Id="c_crashsDLL" Directory="INSTALLFOLDER">
-        <File Source="C:\Users\AdminSRV\source\repos\Remote_MSI_Manager\RemoteMsiManager\bin\Release\Microsoft.AppCenter.Crashes.dll" Id="crashDrr" Vital="yes" KeyPath="yes"/>
-      </Component>
-      <Component Guid="*" Id="c_appCenterDLL" Directory="INSTALLFOLDER">
-        <File Source="C:\Users\AdminSRV\source\repos\Remote_MSI_Manager\RemoteMsiManager\bin\Release\Microsoft.AppCenter.dll" Id="appCenterDLL" Vital="yes" KeyPath="yes"/>
-      </Component>
-      <Component Guid="*" Id="c_jsonDLL" Directory="INSTALLFOLDER">
-        <File Source="C:\Users\AdminSRV\source\repos\Remote_MSI_Manager\RemoteMsiManager\bin\Release\Newtonsoft.Json.dll" Id="jsonDLL" Vital="yes" KeyPath="yes"/>
-      </Component>
-      <Component Guid="*" Id="c_sqliteNetDLL" Directory="INSTALLFOLDER">
-        <File Source="C:\Users\AdminSRV\source\repos\Remote_MSI_Manager\RemoteMsiManager\bin\Release\SQLite-net.dll" Id="sqliteNetDLL" Vital="yes" KeyPath="yes"/>
-      </Component>
-      <Component Guid="*" Id="c_greenDLL" Directory="INSTALLFOLDER">
-        <File Source="C:\Users\AdminSRV\source\repos\Remote_MSI_Manager\RemoteMsiManager\bin\Release\SQLitePCLRaw.batteries_green.dll" Id="greenDLL" Vital="yes" KeyPath="yes"/>
-      </Component>
-      <Component Guid="*" Id="c_batteriesv2DLL" Directory="INSTALLFOLDER">
-        <File Source="C:\Users\AdminSRV\source\repos\Remote_MSI_Manager\RemoteMsiManager\bin\Release\SQLitePCLRaw.batteries_v2.dll" Id="batteriesV2DLL" Vital="yes" KeyPath="yes"/>
-      </Component>
-      <Component Guid="*" Id="c_coreDLL" Directory="INSTALLFOLDER">
-        <File Source="C:\Users\AdminSRV\source\repos\Remote_MSI_Manager\RemoteMsiManager\bin\Release\SQLitePCLRaw.core.dll" Id="coreDLL" Vital="yes" KeyPath="yes"/>
-      </Component>
-      <Component Guid="*" Id="c_sqlite3DLL" Directory="INSTALLFOLDER">
-        <File Source="C:\Users\AdminSRV\source\repos\Remote_MSI_Manager\RemoteMsiManager\bin\Release\SQLitePCLRaw.provider.e_sqlite3.dll" Id="sqlite3DLL" Vital="yes" KeyPath="yes"/>
-      </Component>
-      <Component Guid="*" Id="c_runtimeInformationDLL" Directory="INSTALLFOLDER">
-        <File Source="C:\Users\AdminSRV\source\repos\Remote_MSI_Manager\RemoteMsiManager\bin\Release\System.Runtime.InteropServices.RuntimeInformation.dll" Id="runtimeInformationDLL" Vital="yes" KeyPath="yes"/>
-      </Component>
-      <!--<Component Guid="*" Id="c_e_sqlite3DLLx64" Directory="x64">
-        <File Source="C:\Users\AdminSRV\source\repos\Remote_MSI_Manager\RemoteMsiManager\bin\Release\x64\e_sqlite3.dll" Id="e_sqlite3x64DLL" Vital="yes" KeyPath="yes"/>
-      </Component>-->
-      <Component Guid="*" Id="c_e_sqlite3DLLx86" Directory="x86">
-        <File Source="C:\Users\AdminSRV\source\repos\Remote_MSI_Manager\RemoteMsiManager\bin\Release\x86\e_sqlite3.dll" Id="e_sqlite3x86DLL" Vital="yes" KeyPath="yes"/>
-      </Component>
-      
       <!--  Documentation  -->
       <Component Guid="*" Id="c_Documentation" Directory="Documentation">
         <File Source="C:\Users\AdminSRV\source\repos\Remote_MSI_Manager\SetupRemoteMsiManager\Resources\Remote MSI Manager.pdf" Id="docPDF" Vital="no" KeyPath="yes">

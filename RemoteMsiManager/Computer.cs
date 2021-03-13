@@ -14,7 +14,6 @@ namespace RemoteMsiManager
         }
 
         private System.Threading.Thread _retrieveProducsAsynchThread;
-        private Localization _localization = Localization.GetInstance();
 
         /// <summary>
         /// Constructor for a local Computer
@@ -69,7 +68,7 @@ namespace RemoteMsiManager
             private set { _computerLocation = value; }
         }
 
-        private string _computerName = String.Empty;
+        private readonly string _computerName = String.Empty;
         /// <summary>
         /// Gets the name of the computer
         /// </summary>
@@ -98,7 +97,7 @@ namespace RemoteMsiManager
         /// </summary>
         public bool ProductsRetrievalInProgress { get; private set; }
 
-        private List<MsiProduct> _products = new List<MsiProduct>();
+        private readonly List<MsiProduct> _products = new List<MsiProduct>();
         /// <summary>
         /// Gets the list of MSI Products installed on the computer. Call the <see cref="RetrieveProductsAsynch"/> before, to populate the list.
         /// </summary>
@@ -393,8 +392,6 @@ namespace RemoteMsiManager
         /// <exception cref="Exception"></exception>
         internal uint InstallProduct(string packageLocation, string options)
         {
-            uint result = int.MaxValue;
-
             ConnectionOptions connectionOptions = new ConnectionOptions();
             if (ComputerLocation == ComputerLocations.Remote && !String.IsNullOrEmpty(Username))
             {
@@ -413,9 +410,8 @@ namespace RemoteMsiManager
             inParams["PackageLocation"] = packageLocation;
             ManagementBaseObject outParams = classInstance.InvokeMethod("Install", inParams, null);
             string exitCode = outParams["ReturnValue"].ToString();
-            result = uint.Parse(exitCode);
 
-            return result;
+            return uint.Parse(exitCode);
         }
 
         private void RemoveProduct(string productCode)
@@ -435,8 +431,10 @@ namespace RemoteMsiManager
         /// </summary>
         internal void RetrieveProductsAsynch()
         {
-            _retrieveProducsAsynchThread = new System.Threading.Thread(new System.Threading.ThreadStart(GetInstalledProducts));
-            _retrieveProducsAsynchThread.IsBackground = true;
+            _retrieveProducsAsynchThread = new System.Threading.Thread(new System.Threading.ThreadStart(GetInstalledProducts))
+            {
+                IsBackground = true
+            };
             _retrieveProducsAsynchThread.Start();
         }
 
@@ -474,7 +472,7 @@ namespace RemoteMsiManager
 
         internal class CopyFailedException : Exception
         {
-            private Localization _localization = Localization.GetInstance();
+            private readonly Localization _localization = Localization.GetInstance();
 
             internal CopyFailedException(string errorMessage)
             {

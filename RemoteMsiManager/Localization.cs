@@ -8,7 +8,7 @@ namespace RemoteMsiManager
     public class Localization
     {
         private static Localization _instance = null;
-        private System.Resources.ResourceManager _resMan = null;
+        private readonly System.Resources.ResourceManager _resMan = null;
 
         private Localization()
         {
@@ -29,17 +29,15 @@ namespace RemoteMsiManager
         /// <returns>the localized string.</returns>
         internal string GetLocalizedString(string unlocalizedString)
         {
-            string result = string.Empty;
-
             try
             {
-                result = _resMan.GetString(unlocalizedString);
+                string result = _resMan.GetString(unlocalizedString);
                 if (!string.IsNullOrEmpty(result))
                     return result;
             }
             catch (Exception) { }
 
-            return "Missing_Localized_String_For(" + ((unlocalizedString != null) ? unlocalizedString : "null") + ")";
+            return "Missing_Localized_String_For(" + (unlocalizedString ?? "null") + ")";
         }
 
     }

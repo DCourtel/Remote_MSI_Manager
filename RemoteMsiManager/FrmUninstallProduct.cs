@@ -6,8 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Microsoft.AppCenter.Crashes;
-using Microsoft.AppCenter.Analytics;
 
 namespace RemoteMsiManager
 {
@@ -44,15 +42,6 @@ namespace RemoteMsiManager
 
         internal List<MsiProduct> UninstalledProducts { get; } = new List<MsiProduct>();
 
-        private void ReportUninstallResult(string productName, uint result)
-        {
-            try
-            {
-                Analytics.TrackEvent("Uninstallation", new Dictionary<string, string>() { { "UninstallationResult", $"{productName}:{result.ToString()}" } });
-            }
-            catch (Exception) { }
-        }
-
         private void UninstallProducts()
         {
             foreach (DataGridViewRow row in dgvProducts.Rows)
@@ -66,14 +55,12 @@ namespace RemoteMsiManager
                         row.Cells["Result"].Value = _localization.GetLocalizedString("InProgress");
                         uint result = TargetComputer.UninstallProduct(currentProduct.IdentifyingNumber);
 
-                        ReportUninstallResult(currentProduct.Name, result);
-
                         ReportUninstallResult(result, row, currentProduct);
                     }
                 }
                 catch (Exception ex)
                 {
-                    Crashes.TrackError(ex);
+                    
                     txtBxMessage.Text = _localization.GetLocalizedString("Failed") + " : " + ex.Message;
                     txtBxMessage.BackColor = Color.Orange;
                 }
@@ -138,7 +125,7 @@ namespace RemoteMsiManager
                     properties.ShowDialog();
                 }
             }
-            catch (Exception ex) { Crashes.TrackError(ex); }
+            catch (Exception) {  }
         }
 
         private void dgvProducts_SelectionChanged(object sender, EventArgs e)

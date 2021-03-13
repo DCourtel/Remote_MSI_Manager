@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using Microsoft.AppCenter.Crashes;
-using Microsoft.AppCenter.Analytics;
 
 namespace RemoteMsiManager
 {
@@ -82,7 +80,7 @@ namespace RemoteMsiManager
                     AddComputers(argComputers, argUsername, argPassword);
                 }
             }
-            catch (Exception ex) { Crashes.TrackError(ex); }
+            catch (Exception) {  }
         }
 
         private void AddComputers(string computers, string username, string password)
@@ -93,7 +91,7 @@ namespace RemoteMsiManager
                 {
                     AddComputer(new Computer(computer, username, password));
                 }
-                catch (Exception ex) { Crashes.TrackError(ex); }
+                catch (Exception) {  }
             }
         }
 
@@ -110,7 +108,7 @@ namespace RemoteMsiManager
                     computerList.Add(computer);
                 }
             }
-            catch (Exception ex) { Crashes.TrackError(ex); }
+            catch (Exception) { }
 
             return computerList;
         }
@@ -145,7 +143,7 @@ namespace RemoteMsiManager
                             { dgvProducts.Sort(dgvProducts.Columns["ProductName"], ListSortDirection.Ascending); }
                         }
                     }
-                    catch (Exception ex) { Crashes.TrackError(ex); }
+                    catch (Exception ) {  }
                 };
             Invoke(displayProductsAction);
         }
@@ -174,7 +172,7 @@ namespace RemoteMsiManager
             }
             catch (Exception ex)
             {
-                Crashes.TrackError(ex);
+                
                 dgvComputers.Rows[index].Cells["UserName"].Style = _errorCell;
                 dgvComputers.Rows[index].Cells["UserName"].ToolTipText = ex.Message;
             }
@@ -234,7 +232,7 @@ namespace RemoteMsiManager
                 {
                     RemoveProduct(uninstalledProduct);
                 }
-                catch (Exception ex) { Crashes.TrackError(ex); }
+                catch (Exception ) {  }
             }
             UpdateProductCount(targetComputer, dgvProducts.Rows.Count);
         }
@@ -263,7 +261,7 @@ namespace RemoteMsiManager
                 FrmProductProperties properties = new FrmProductProperties(selectedProduct);
                 properties.ShowDialog();
             }
-            catch (Exception ex) { Crashes.TrackError(ex); }
+            catch (Exception ) {  }
         }
 
         private void UnintallSelectedProducts()
@@ -289,8 +287,7 @@ namespace RemoteMsiManager
                 }
             }
             catch (Exception ex)
-            {
-                Crashes.TrackError(ex);
+            {                
                 MessageBox.Show(ex.Message);
             }
         }
@@ -321,7 +318,7 @@ namespace RemoteMsiManager
                     }
                 }
             }
-            catch (Exception ex) { Crashes.TrackError(ex); }
+            catch (Exception) {  }
         }
         
         private void ReportShowDetails()
@@ -330,7 +327,6 @@ namespace RemoteMsiManager
             {
                 var productName = dgvProducts.SelectedRows[0].Cells["ProductName"].Value.ToString();
                 var productVersion = dgvProducts.SelectedRows[0].Cells["Version"].Value.ToString();
-                Analytics.TrackEvent("Show product details", new Dictionary<string, string>() { { "Product", $"{productName}-{productVersion}" } });
             }
             catch (Exception) { }
         }
@@ -365,13 +361,13 @@ namespace RemoteMsiManager
                 }
                 catch (Exception ex)
                 {
-                    Crashes.TrackError(ex);
+                    
                     MessageBox.Show(ex.Message);
                 }
             }
             catch (Exception ex)
             {
-                Crashes.TrackError(ex);
+                
                 MessageBox.Show(ex.Message);
             }
         }
@@ -398,12 +394,6 @@ namespace RemoteMsiManager
             {
                 AddComputer(new Computer(addRemoteComputer.ComputerName, addRemoteComputer.Username, addRemoteComputer.Password));
                 _password = addRemoteComputer.Password;
-
-                try
-                {                    
-                    Analytics.TrackEvent("Add Remote Computer", new Dictionary<string, string>() { { "ComputerName", $"{addRemoteComputer.ComputerName}" } });
-                }
-                catch (Exception) { }
             }
         }
 
@@ -422,7 +412,7 @@ namespace RemoteMsiManager
                     }
                 }
             }
-            catch (Exception ex) { Crashes.TrackError(ex); }
+            catch (Exception) {  }
         }
 
         private void btnQuit_Click(object sender, EventArgs e)
@@ -450,7 +440,7 @@ namespace RemoteMsiManager
                     DisplayProductForComputer(selectedComputer);
                 }
             }
-            catch (Exception ex) { Crashes.TrackError(ex); }
+            catch (Exception) {  }
         }
 
         // DataGridView Computers
@@ -536,7 +526,7 @@ namespace RemoteMsiManager
                     btnRemoveComputers.Enabled = false;
                 }
             }
-            catch (Exception ex) { Crashes.TrackError(ex); }
+            catch (Exception) {  }
         }
 
         // DataGridView Products
@@ -547,7 +537,7 @@ namespace RemoteMsiManager
             {
                 btnUninstall.Enabled = (dgvProducts.SelectedRows != null && dgvProducts.SelectedRows.Count > 0);
             }
-            catch (Exception ex) { Crashes.TrackError(ex); }
+            catch (Exception) {  }
         }
 
         private void dgvProducts_SortCompare(object sender, DataGridViewSortCompareEventArgs e)
@@ -618,7 +608,7 @@ namespace RemoteMsiManager
                     ShowProductDetails(dgvProducts.SelectedRows[0].Index);
                 }
             }
-            catch (Exception ex) { Crashes.TrackError(ex); }
+            catch (Exception) {  }
         }
 
         // Form
@@ -639,7 +629,7 @@ namespace RemoteMsiManager
                     ReportShowDetails();
                     ShowProductDetails(dgvProducts.SelectedRows[0].Index); }
             }
-            catch (Exception ex) { Crashes.TrackError(ex); }
+            catch (Exception) {  }
         }
 
         private void tlStrSetAsPattern_Click(object sender, EventArgs e)
@@ -651,7 +641,7 @@ namespace RemoteMsiManager
                     txtBxPattern.Text = GetAllSelectedMsiProductCodes();
                 }
             }
-            catch (Exception ex) { Crashes.TrackError(ex); }
+            catch (Exception) {  }
         }
 
         private void tlStrSetAsException_Click(object sender, EventArgs e)
@@ -663,7 +653,7 @@ namespace RemoteMsiManager
                     txtBxExceptions.Text = GetAllSelectedMsiProductCodes();
                 }
             }
-            catch (Exception ex) { Crashes.TrackError(ex); }
+            catch (Exception) {  }
         }
 
         private void tlStrUninstallProducts_Click(object sender, EventArgs e)
@@ -690,7 +680,7 @@ namespace RemoteMsiManager
                     Clipboard.SetText(content);
                 }
             }
-            catch (Exception ex) { Crashes.TrackError(ex); }
+            catch (Exception) {  }
         }
 
         private void tlStrCopyMsiProductCode_Click(object sender, EventArgs e)
@@ -703,7 +693,7 @@ namespace RemoteMsiManager
                     Clipboard.SetText(dgvProducts.SelectedRows[0].Cells["identifyingNumber"].Value.ToString());
                 }
             }
-            catch (Exception ex) { Crashes.TrackError(ex); }
+            catch (Exception) {  }
         }
 
         // TextBox Change

@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using Microsoft.AppCenter.Crashes;
-using Microsoft.AppCenter.Analytics;
 
 namespace RemoteMsiManager
 {
@@ -17,16 +15,10 @@ namespace RemoteMsiManager
         {
             InitializeComponent();
 
-            try
+            if (Directory.Exists(Properties.Settings.Default.NetworkInstallSource))
             {
-                FileInfo sourceFile = new FileInfo(Properties.Settings.Default.NetworkInstallSource);
-
-                if (Directory.Exists(sourceFile.DirectoryName))
-                {
-                    txtBxLocalPackage.Text = sourceFile.DirectoryName;
-                }
+                txtBxLocalPackage.Text = Properties.Settings.Default.NetworkInstallSource;
             }
-            catch (Exception ex) { Crashes.TrackError(ex); }
 
             txtBxTargetComputer.Text = targetComputer.ComputerName;
             _targetComputer = targetComputer;
@@ -68,7 +60,7 @@ namespace RemoteMsiManager
                     }
                 }
             }
-            catch (Exception ex) { Crashes.TrackError(ex); }
+            catch (Exception) { }
 
             btnInstall.Enabled = _sourceFileExists && _additionalFilesExists && _additionalFoldersExists;
             btnRemoveFiles.Enabled = (chkLstFiles.CheckedItems != null && chkLstFiles.CheckedItems.Count != 0);
@@ -125,15 +117,6 @@ namespace RemoteMsiManager
             chklstFolders.Enabled = isEnabled;
         }
 
-        private void ReportInstallationResult(string filename, uint result)
-        {
-            try
-            {
-                Analytics.TrackEvent("Installation", new Dictionary<string, string>() { { "InstallationResult", $"{filename}:{result.ToString()}" } });
-            }
-            catch (Exception) { }
-        }
-
         #endregion (Methods)
 
         #region (Events)
@@ -161,7 +144,7 @@ namespace RemoteMsiManager
             }
             catch (Exception ex)
             {
-                Crashes.TrackError(ex);
+                
                 MessageBox.Show(ex.Message);
             }
         }
@@ -191,7 +174,7 @@ namespace RemoteMsiManager
             }
             catch (Exception ex)
             {
-                Crashes.TrackError(ex);
+                
                 MessageBox.Show(ex.Message);
             }
         }
@@ -214,7 +197,7 @@ namespace RemoteMsiManager
             }
             catch (Exception ex)
             {
-                Crashes.TrackError(ex);
+                
                 MessageBox.Show(ex.Message);
             }
         }
@@ -229,12 +212,12 @@ namespace RemoteMsiManager
                     {
                         chkLstFiles.Items.Remove(chkLstFiles.CheckedItems[0]);
                     }
-                    catch (Exception ex) { Crashes.TrackError(ex); }
+                    catch (Exception) {  }
                 }
             }
             catch (Exception ex)
             {
-                Crashes.TrackError(ex);
+                
                 MessageBox.Show(ex.Message);
             }
             ValidateData();
@@ -250,12 +233,11 @@ namespace RemoteMsiManager
                     {
                         chklstFolders.Items.Remove(chklstFolders.CheckedItems[0]);
                     }
-                    catch (Exception ex) { Crashes.TrackError(ex); }
+                    catch (Exception) { }
                 }
             }
             catch (Exception ex)
             {
-                Crashes.TrackError(ex);
                 MessageBox.Show(ex.Message);
             }
             ValidateData();
@@ -296,19 +278,15 @@ namespace RemoteMsiManager
                 }
                 uint result = _targetComputer.InstallProduct(Path.Combine(rootFolder, subFolder, mainFileInfo.Name), options);
 
-                ReportInstallationResult(mainFileInfo.Name, result);
-
                 DisplayResult(result);
             }
             catch (Computer.CopyFailedException ex)
             {
-                Crashes.TrackError(ex);
                 txtBxResult.Text = ex.Message;
                 txtBxResult.BackColor = Color.Orange;
             }
             catch (Exception ex)
             {
-                Crashes.TrackError(ex);
                 txtBxResult.Text = ex.Message;
                 txtBxResult.BackColor = Color.Orange;
             }
@@ -319,7 +297,7 @@ namespace RemoteMsiManager
                 NetUse.UnMount(rootFolder);
                 DisplayStatus(String.Empty);
             }
-            catch (Exception ex) { Crashes.TrackError(ex); }
+            catch (Exception) {}
             LockUI(true);
         }
 
@@ -343,7 +321,7 @@ namespace RemoteMsiManager
                     }
                 }
             }
-            catch (Exception ex) { Crashes.TrackError(ex); }
+            catch (Exception) { }
             DialogResult = DialogResult.OK;
         }
 
